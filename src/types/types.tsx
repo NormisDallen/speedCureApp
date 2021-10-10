@@ -1,5 +1,5 @@
 //create types
-export type Message = string | number;
+
 
 //create interinface
 export interface UserInterface {
@@ -13,3 +13,13 @@ export interface IconInterface {
   size: number;
   color: string;
 }
+
+//helper types
+export type _String = string;
+export type _Mixed = string|null;
+export type _Number = number;
+export type _Boolean = boolean;
+export type __Mixed = string|boolean;
+export type _Any = any;
+
+
