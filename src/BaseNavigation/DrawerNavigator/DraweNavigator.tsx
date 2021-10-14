@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import StackNavigator from '../StackNavigator/StackNavigator';
 import BottomNavigator from '../BottomNavigator/BottomNavigator';
+import DrawerContentComponent from '../../components/Drawer/DrawerContent';
 
 function HomeScreen({navigation}: any) {
   return (
@@ -26,9 +26,10 @@ const Drawer = createDrawerNavigator();
 
 const DraweNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={BottomNavigator} />
-      <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+    <Drawer.Navigator
+      initialRouteName="SpeedCure"
+      drawerContent={props => <DrawerContentComponent {...props} />}>
+      <Drawer.Screen name="SpeedCure" component={BottomNavigator} />
     </Drawer.Navigator>
   );
 };
