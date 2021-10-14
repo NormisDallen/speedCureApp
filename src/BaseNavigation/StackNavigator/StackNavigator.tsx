@@ -1,15 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import BottomNavigator from '../BottomNavigator/BottomNavigator';
+import HomeScreen from '../../screens/HomeScreens/HomeScreen';
 
-function HomeScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{color: 'black'}}>Home Screen</Text>
-    </View>
-  );
-}
 function CheckerScreen() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -20,6 +13,7 @@ function CheckerScreen() {
 
 const Stack = createNativeStackNavigator();
 
+//defaul stack
 const StackNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
@@ -38,6 +32,7 @@ const StackNavigator = () => {
 };
 
 export default StackNavigator;
+//default stack
 
 export const CheckerStack = () => {
   return (
