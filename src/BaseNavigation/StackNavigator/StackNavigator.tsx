@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/HomeScreens/HomeScreen';
+import AppBar from '../../components/AppBars/AppBar';
+import {theme} from '../../theme/theme';
 
 function CheckerScreen() {
   return (
@@ -19,8 +21,31 @@ const StackNavigator = () => {
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
-        options={{headerShown: false}}
         component={HomeScreen}
+        options={({route}) => ({
+          header: props => (
+            <AppBar
+              {...props}
+              title="Speed Cure"
+              subTitle="Your health first"
+              barStyle={{
+                backgroundColor: `${theme.colors.text}`,
+                width: '100%',
+                elevation: 5,
+              }}
+              titleStyle={{
+                marginTop: 5,
+
+                alignSelf: 'center',
+                color: `${theme.colors.primary}`,
+              }}
+              subtitleStyle={{
+                alignSelf: 'center',
+                color: `${theme.colors.placeholder}`,
+              }}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name="Checker"

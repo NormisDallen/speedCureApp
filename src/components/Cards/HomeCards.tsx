@@ -270,6 +270,7 @@ const HomeCard = ({
         </View>
       </Card.Content>
       {/*caption */}
+      <View style={[generalstyles.viewStyle, {marginVertical: 5}]}></View>
     </Card>
   );
 };

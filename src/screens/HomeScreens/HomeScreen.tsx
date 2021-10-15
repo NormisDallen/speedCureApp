@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
+
 import HomeCard from '../../components/Cards/HomeCards';
 import StatusComponent from '../../components/ScrollView/StatusScrollView';
 import {homecards} from '../../fakedata/homecards';
 import {generalstyles} from '../../general/generalstyles';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   const [images, setStatus] = useState([
     {image: '../../assets/appstore.png', word: 'chilling'},
     {image: '../../assets/playstore.png', word: 'mulago hospital'},
@@ -29,6 +30,7 @@ const HomeScreen = () => {
         ListHeaderComponent={
           <View>
             <StatusComponent images={images} showViews={true} />
+            <View style={[generalstyles.viewStyle]}></View>
           </View>
         }
         contentContainerStyle={{
@@ -48,7 +50,6 @@ const HomeScreen = () => {
                 time={item?.time}
                 likes={item?.likes}
               />
-              <View style={[generalstyles.viewStyle]}></View>
             </>
           );
         }}

@@ -14,6 +14,7 @@ import {generalstyles} from '../../general/generalstyles';
 import {IonIcon, MaterialCommunityIcon} from '../Icons/Icons';
 import AvatarComponent from '../Avatar/Avatar';
 import {useNavigation} from '@react-navigation/native';
+import {theme} from '../../theme/theme';
 
 const DrawerContentComponent = (props: any) => {
   const navigation = useNavigation<any>();
@@ -56,6 +57,7 @@ const DrawerContentComponent = (props: any) => {
                   size={size}
                   color={color}
                 />
+                
               )}
               onPress={() => navigation?.navigate('HomeTab')}
             />
@@ -92,9 +94,13 @@ const DrawerContentComponent = (props: any) => {
           <Drawer.Section title="Preferences">
             <TouchableRipple onPress={toggleSwitch}>
               <View style={styles.preference}>
-                <Text>Dark theme</Text>
+                <Text>{darkTheme ? 'Dark theme' : 'Light theme'}</Text>
                 <View>
-                  <Switch value={darkTheme} />
+                  <Switch
+                    value={darkTheme}
+                    color={theme.colors.black}
+                    onValueChange={toggleSwitch}
+                  />
                 </View>
               </View>
             </TouchableRipple>
