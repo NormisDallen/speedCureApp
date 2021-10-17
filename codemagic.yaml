@@ -1,23 +1,16 @@
-# Check out https://docs.codemagic.io/yaml/building-a-react-native-app/ for more information
-# Please review and update values
-
 workflows:
   react-native-android:
-    name: Speed Cure
+    name: React Native Android
     max_build_duration: 120
     instance_type: mac_mini
     environment:
       groups:
-        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
         - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
-          # CM_KEYSTORE <-- Put your keystore file here
-          # CM_KEYSTORE_PASSWORD <-- Put your keystore password here
-          # CM_KEY_ALIAS_PASSWORD <-- Put your keystore alias password here
-          # CM_KEY_ALIAS_USERNAME <-- Put your keystore alias username here
-        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        PACKAGE_NAME: 'com.speedcure' # <-- Put your package name here e.g. com.domain.myapp
+        PACKAGE_NAME: 'YOUR_PACKAGE_NAME' # <-- Put your package name here e.g. com.domain.myapp
       node: latest
     triggering:
       events:
@@ -25,7 +18,7 @@ workflows:
         - tag
         - pull_request
       branch_patterns:
-        - pattern: main
+        - pattern: develop
           include: true
           source: true
     scripts:
@@ -57,8 +50,8 @@ workflows:
       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
       email:
         recipients:
-          - katznicho@gmail.com
-
+          - user_1@example.com
+          - user_2@example.com
         notify:
           success: true # To not receive a notification when a build succeeds
           failure: false # To not receive a notification when a build fails
@@ -67,9 +60,9 @@ workflows:
         channel: '#channel-name'
         notify_on_build_start: true # To receive a notification when a build starts
         notify:
-          success: true # To not receive a notification when a build succeeds
+          success: true # To receive a notification when a build succeeds
           failure: false # To not receive a notification when a build fails
       google_play:
         # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: alpha # Any default or custom track that is not in ‘draft’ status
+        track: alpha # <-- Any default or custom track that is not in ‘draft’ status
