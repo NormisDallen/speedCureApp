@@ -4,6 +4,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/HomeScreens/HomeScreen';
 import AppBar from '../../components/AppBars/AppBar';
 import {theme} from '../../theme/theme';
+import MenuScreen from '../../screens/MenuScreens/MenuScreen';
+import MenuServices from '../../screens/MenuScreens/MenuServices';
+import SearchAppBar from '../../components/AppBars/SearchAppBar';
 
 function CheckerScreen() {
   return (
@@ -15,7 +18,7 @@ function CheckerScreen() {
 
 const Stack = createNativeStackNavigator();
 
-//defaul stack
+//home stacks
 const StackNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
@@ -26,6 +29,7 @@ const StackNavigator = () => {
           header: props => (
             <AppBar
               {...props}
+              showCart
               title="Speed Cure"
               subTitle="Your health first"
               barStyle={{
@@ -34,7 +38,7 @@ const StackNavigator = () => {
                 elevation: 5,
               }}
               titleStyle={{
-                marginTop: 5,
+                marginTop: 2,
 
                 alignSelf: 'center',
                 color: `${theme.colors.primary}`,
@@ -42,6 +46,7 @@ const StackNavigator = () => {
               subtitleStyle={{
                 alignSelf: 'center',
                 color: `${theme.colors.placeholder}`,
+                marginBottom: 5,
               }}
             />
           ),
@@ -59,22 +64,52 @@ const StackNavigator = () => {
 export default StackNavigator;
 //default stack
 
-export const CheckerStack = () => {
+//menu stack
+export const MenuStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Checker">
+    <Stack.Navigator initialRouteName="MenuServices">
       <Stack.Screen
-        name="Home"
-        options={{headerShown: false}}
-        component={HomeScreen}
-      />
+        name="MenuService"
+        options={({route}) => ({
+          header: props => (
+            <AppBar
+              {...props}
+              showCart={false}
+              title="Available Services"
+              barStyle={{
+                backgroundColor: `${theme.colors.text}`,
+                width: '100%',
+                elevation: 0,
+              }}
+              titleStyle={{
+                marginTop: 2,
 
+                color: `${theme.colors.primary}`,
+              }}
+              subtitleStyle={{
+                alignSelf: 'center',
+                color: `${theme.colors.placeholder}`,
+                marginBottom: 5,
+              }}
+            />
+          ),
+        })}
+        component={MenuScreen}
+      />
       <Stack.Screen
-        name="Checker"
-        options={{headerShown: false}}
-        component={CheckerScreen}
+        name="Hospitals"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search hospitals`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
       />
     </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({});
+//menu statck

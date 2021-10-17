@@ -40,23 +40,33 @@ export interface StatusInterface {
 }
 
 //homecard interface
-export interface HomeInterface{
-  images:string[],
-  hospitalName:string,
-  time:string,
-  event:string,
-  likes?:number,
-  comments?:string[],
-  displayPicture?:string,
-  
-
+export interface HomeInterface {
+  images: string[];
+  hospitalName: string;
+  time: string;
+  event: string;
+  likes?: number;
+  comments?: string[];
+  displayPicture?: string;
+  description?: string;
 }
 //homecard interface
 
 //avatar interface
-export interface AvatarInterface{
-  size:number,
-  source:string,
-  avatarStyle?:any
+export interface AvatarInterface {
+  size: number;
+  source: string;
+  avatarStyle?: any;
 }
 //avatar interface
+
+//menu interface
+interface MenuItems {
+  image: string;
+  id: number | string;
+  serviceName: string;
+}
+export interface MenuInterface {
+  menu: MenuItems[];
+}
+//menu interface

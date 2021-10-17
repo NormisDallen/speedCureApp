@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
-
 import HomeCard from '../../components/Cards/HomeCards';
 import StatusComponent from '../../components/ScrollView/StatusScrollView';
 import {homecards} from '../../fakedata/homecards';
 import {generalstyles} from '../../general/generalstyles';
+import {FAB} from 'react-native-paper';
+import {theme} from '../../theme/theme';
 
 const HomeScreen = ({navigation}: any) => {
   const [images, setStatus] = useState([
@@ -26,6 +27,21 @@ const HomeScreen = ({navigation}: any) => {
 
   return (
     <View style={[generalstyles.background, generalstyles.container]}>
+      {/* FAB*/}
+      <FAB
+        style={[generalstyles.absoluteStyles, {right: 10, bottom: 10}]}
+        icon="plus"
+        accessibilityLabel="post"
+        animated={true}
+        onPress={() => console.log('Pressed')}
+        color={theme.colors.primary}
+        theme={{
+          colors: {
+            accent: theme.colors.text,
+          },
+        }}
+      />
+      {/*FAB */}
       <FlatList
         ListHeaderComponent={
           <View>
@@ -49,6 +65,7 @@ const HomeScreen = ({navigation}: any) => {
                 displayPicture={item?.displayPicture}
                 time={item?.time}
                 likes={item?.likes}
+                description={item?.description}
               />
             </>
           );

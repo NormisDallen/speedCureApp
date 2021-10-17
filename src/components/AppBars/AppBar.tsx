@@ -13,6 +13,7 @@ const AppBar = ({
   subtitleStyle,
   titleStyle,
   barStyle,
+  showCart,
 }: any) => {
   return (
     <Appbar.Header dark={true} style={[barStyle]}>
@@ -40,37 +41,41 @@ const AppBar = ({
         subtitleStyle={subtitleStyle}
       />
 
-      <View
-        style={{
-          marginRight: 10,
-        }}>
-        <Badge
-          size={17}
-          visible={true}
-          style={[
-            generalstyles.absoluteStyles,
-            {
-              right: 0,
-              color: `${theme.colors.text}`,
-              backgroundColor: `${theme.colors.primary}`,
-              fontWeight: '500',
-              fontSize: 10,
-              zIndex: 20,
-            },
-          ]}>
-          {0}
-        </Badge>
-        <Pressable
-          onPress={() =>
-            navigation.navigate('DrugStore', {name: 'Drug Store'})
-          }>
-          <AntDesignIcon
-            name={'shoppingcart'}
-            size={40}
-            color={theme.colors.black}
-          />
-        </Pressable>
-      </View>
+      {/*show cart */}
+      {showCart && (
+        <View
+          style={{
+            marginRight: 10,
+          }}>
+          <Badge
+            size={17}
+            visible={true}
+            style={[
+              generalstyles.absoluteStyles,
+              {
+                right: 0,
+                color: `${theme.colors.text}`,
+                backgroundColor: `${theme.colors.primary}`,
+                fontWeight: '500',
+                fontSize: 10,
+                zIndex: 20,
+              },
+            ]}>
+            {0}
+          </Badge>
+          <Pressable
+            onPress={() =>
+              navigation.navigate('DrugStore', {name: 'Drug Store'})
+            }>
+            <AntDesignIcon
+              name={'shoppingcart'}
+              size={40}
+              color={theme.colors.black}
+            />
+          </Pressable>
+        </View>
+      )}
+      {/*show cart */}
     </Appbar.Header>
   );
 };

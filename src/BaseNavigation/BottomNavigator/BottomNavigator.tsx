@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import StackNavigator from '../StackNavigator/StackNavigator';
-import {CheckerStack} from '../StackNavigator/StackNavigator';
+import {MenuStack} from '../StackNavigator/StackNavigator';
 import {theme} from '../../theme/theme';
 import {Avatar} from 'react-native-paper';
 import {IonIcon, MaterialCommunityIcon} from '../../components/Icons/Icons';
@@ -36,7 +36,7 @@ export default function BottomNavigator() {
       />
       <Tab.Screen
         name="Menu"
-        component={CheckerStack}
+        component={MenuStack}
         options={{
           tabBarLabel: 'Menu',
           tabBarIcon: ({color}) => (
@@ -46,7 +46,7 @@ export default function BottomNavigator() {
       />
       <Tab.Screen
         name="Search"
-        component={CheckerStack}
+        component={MenuStack}
         options={{
           tabBarLabel: 'search',
           tabBarIcon: ({color}) => (
@@ -56,7 +56,7 @@ export default function BottomNavigator() {
       />
       <Tab.Screen
         name="Notifications"
-        component={CheckerStack}
+        component={MenuStack}
         options={{
           tabBarLabel: 'Notifications',
           tabBarIcon: ({color}) => (

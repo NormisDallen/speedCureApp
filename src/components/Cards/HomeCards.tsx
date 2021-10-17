@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import {Badge, Paragraph} from 'react-native-paper';
 
-import {Avatar, Button, Card} from 'react-native-paper';
+import {Avatar, Card} from 'react-native-paper';
 import {theme} from '../../theme/theme';
 import {Evil, IonIcon, MaterialCommunityIcon} from '../Icons/Icons';
 import {HomeInterface, _Number} from '../../types/types';
@@ -30,6 +30,7 @@ const HomeCard = ({
   time,
   hospitalName,
   likes,
+  description,
 }: HomeInterface) => {
   const onPress = () => {
     Alert.alert('pressed');
@@ -37,37 +38,79 @@ const HomeCard = ({
   //seticon color
   const [iconHeartColor, setIconHeartColor] = useState<string>('black');
   //const [comm]
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState<string>('');
 
   return (
     <Card>
-      <Card.Title
-        title={`${hospitalName}`}
-        subtitle={`${time}`}
-        left={props => (
-          <View style={{flex: 1}}>
-            <Avatar.Image {...props} source={{uri: displayPicture}} />
+      <View
+        style={[generalstyles.flexStyles, {justifyContent: 'space-evenly'}]}>
+        <View style={{flex: 1}}>
+          <View
+            style={[
+              generalstyles.flexStyles,
+              {marginHorizontal: 10, marginTop: 10},
+            ]}>
+            <Pressable style={{marginHorizontal: 10}}>
+              <Avatar.Image source={{uri: displayPicture}} />
+            </Pressable>
+            <View>
+              <Paragraph
+                style={[
+                  {
+                    fontSize: 18,
+                    color: theme.colors.onSurface,
+                  },
+                ]}>{`${hospitalName}`}</Paragraph>
+              <View style={{width: theme.dimensions.width / 1.3}}>
+                <Paragraph
+                  style={{
+                    color: theme.colors.placeholder,
+                  }}>{`${time}`}</Paragraph>
+                <Paragraph
+                  style={{
+                    color: theme.colors.onSurface,
+                  }}>{`${description}`}</Paragraph>
+              </View>
+            </View>
           </View>
-        )}
-        right={() => (
-          <View style={{marginRight: 15}}>
+          <View></View>
+        </View>
+        <View style={[{justifyContent: 'flex-end'}]}>
+          <Pressable
+            style={[
+              {marginRight: 10, right: 10, top: 10},
+              generalstyles.absoluteStyles,
+            ]}>
             <MaterialCommunityIcon
               size={21}
               name="dots-vertical"
-              color={theme.colors.primary}
+              color={theme.colors.placeholder}
             />
-          </View>
-        )}
-      />
+          </Pressable>
+        </View>
+      </View>
 
       {/* <Card.Cover source={{uri:"https://picsum.photos/700"}} />*/}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          marginHorizontal: 15,
+          marginVertical: 5,
+          borderRadius: 10,
+        }}>
         {images?.map((item: string, index: _Number) => (
           <View key={index}>
             <Pressable
               style={{
                 borderWidth: StyleSheet.hairlineWidth,
                 borderColor: theme.colors.text,
+                marginRight: images.length - 1 == index ? 35 : 0,
+                borderRadius: 10,
+                width:
+                  images?.length == 1
+                    ? theme.dimensions.width - 50
+                    : theme.dimensions.width / 1.5,
               }}>
               {/*show badge */}
               <Badge
@@ -111,11 +154,9 @@ const HomeCard = ({
 
               <Image
                 style={{
-                  width:
-                    images?.length == 1
-                      ? theme.dimensions.width
-                      : theme.dimensions.width / 1.2,
+                  width: '100%',
                   height: 300,
+                  borderRadius: 10,
                 }}
                 source={{
                   uri: item,

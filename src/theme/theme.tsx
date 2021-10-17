@@ -22,6 +22,7 @@ export const theme = {
     backdrop: '#005500',
     black: '#000000',
     yellow: 'gold',
+    whitesmoke: 'whitesmoke',
   },
   font: {
     regular: 20,
