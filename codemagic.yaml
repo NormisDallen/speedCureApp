@@ -10,7 +10,7 @@ workflows:
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        PACKAGE_NAME: 'YOUR_PACKAGE_NAME' # <-- Put your package name here e.g. com.domain.myapp
+        PACKAGE_NAME: 'com.speedcure' # <-- Put your package name here e.g. com.domain.myapp
       node: latest
     triggering:
       events:
@@ -18,7 +18,7 @@ workflows:
         - tag
         - pull_request
       branch_patterns:
-        - pattern: develop
+        - pattern: main
           include: true
           source: true
     scripts:
@@ -50,19 +50,9 @@ workflows:
       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
       email:
         recipients:
-          - user_1@example.com
-          - user_2@example.com
+          - katznicho@gmail.com
+
         notify:
           success: true # To not receive a notification when a build succeeds
           failure: false # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: '#channel-name'
-        notify_on_build_start: true # To receive a notification when a build starts
-        notify:
-          success: true # To receive a notification when a build succeeds
-          failure: false # To not receive a notification when a build fails
-      google_play:
-        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: alpha # <-- Any default or custom track that is not in ‘draft’ status
+      
