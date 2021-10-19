@@ -31,11 +31,10 @@ const SearchAppBar = ({navigation, previous, placeholder}: any) => {
             borderRadius: 25,
             marginTop: 5,
             marginBottom: 10,
-            marginLeft: -10,
-            marginRight: 20,
+            marginLeft: -8,
+            marginRight: 25,
             backgroundColor: theme.colors.text,
             height: 42,
-
             color: `${theme.colors.primary}`,
             width: theme.dimensions.width - 50,
           }}

@@ -69,7 +69,7 @@ export const MenuStack = () => {
   return (
     <Stack.Navigator initialRouteName="MenuServices">
       <Stack.Screen
-        name="MenuService"
+        name="MenuServices"
         options={({route}) => ({
           header: props => (
             <AppBar
@@ -97,12 +97,80 @@ export const MenuStack = () => {
         component={MenuScreen}
       />
       <Stack.Screen
+        name="MenuService"
+        options={{
+          headerShown: false,
+        }}
+        component={MenuServicestack}
+      />
+    </Stack.Navigator>
+  );
+};
+//menu statck
+
+//menulist stack
+const MenuServicestack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Hospitals">
+      <Stack.Screen
         name="Hospitals"
         options={{
           header: props => (
             <SearchAppBar
               {...props}
-              placeholder={`search hospitals`}
+              placeholder={`search for hospitals`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Doctors"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for Doctors`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Pharmacies"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for Pharmaciess`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Nurses"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for nurses`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Clinics"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for clinics`}
               previous={true}
             />
           ),
@@ -112,4 +180,4 @@ export const MenuStack = () => {
     </Stack.Navigator>
   );
 };
-//menu statck
+//menulist stack

@@ -34,6 +34,9 @@ export const generalstyles = StyleSheet.create({
   },
   viewStyle: {
     borderBottomColor: `${theme.colors.ligthgray}`,
-    borderBottomWidth: 5
-}
+    borderBottomWidth: 5,
+  },
+  cardMargin: {
+    marginVertical: 2,
+  },
 });

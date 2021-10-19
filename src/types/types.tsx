@@ -65,8 +65,35 @@ interface MenuItems {
   image: string;
   id: number | string;
   serviceName: string;
+  data?: {
+    name: string;
+    id: number;
+    image: string;
+    description: string;
+    distance?: string;
+    workingTime?: string;
+    rating?: number;
+    paymentOptions?: string[];
+    languages: string[];
+  }[];
 }
 export interface MenuInterface {
   menu: MenuItems[];
 }
 //menu interface
+
+//menuservice interface
+export interface MenuServiceInterface {
+  service: {
+    name: string;
+    id: number;
+    image: string;
+    description: string;
+    distance?: string;
+    location?: string;
+    workingTime?: string;
+    rating?: number;
+    paymentOptions?: string[];
+    languages: string[];
+  }[];
+}

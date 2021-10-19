@@ -32,7 +32,7 @@ const StatusComponent = ({images, showViews, imageStyles}: StatusInterface) => {
       style={styles.containerStyles}
       showsHorizontalScrollIndicator={false}>
       {images?.map((item: StatusImages, index: _Number) => {
-        console.log(`The item is ${JSON.stringify(item.image)}`);
+        //console.log(`The item is ${JSON.stringify(item.image)}`);
         return (
           <View key={index}>
             <Pressable
@@ -133,6 +133,5 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     padding: 5,
     borderWidth: 0,
-  
   },
 });

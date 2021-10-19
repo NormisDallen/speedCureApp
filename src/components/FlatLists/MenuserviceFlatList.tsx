@@ -4,6 +4,7 @@ import {theme} from '../../theme/theme';
 import {Card, Title, Paragraph, Badge} from 'react-native-paper';
 import {generalstyles} from '../../general/generalstyles';
 import ButtonComponent from '../Buttons/Button';
+import {MenuServiceInterface} from '../../types/types';
 import {
   AntDesignIcon,
   Evil,
@@ -12,45 +13,11 @@ import {
   OctIcon,
 } from '../Icons/Icons';
 
-const fakeData = [
-  {
-    id: 1,
-    image:
-      'https://media.istockphoto.com/photos/large-modern-building-with-blue-letter-h-sign-for-hospital-picture-id1240772668?b=1&k=20&m=1240772668&s=170667a&w=0&h=fBVaxHKgl7-EQsik0B6MF9vG-FSRMrlLpyxoP5lIRtM=',
-    description: 'We are located in ntinda opposite lavanda hotel',
-    distance: '2km away',
-    name: 'Kawempe',
-  },
-  {
-    id: 2,
-    image:
-      'https://media.istockphoto.com/photos/large-modern-building-with-blue-letter-h-sign-for-hospital-picture-id1240772668?b=1&k=20&m=1240772668&s=170667a&w=0&h=fBVaxHKgl7-EQsik0B6MF9vG-FSRMrlLpyxoP5lIRtM=',
-    description: 'We are located in ntinda opposite lavanda hotel',
-    distance: '2km away',
-    name: 'Gayaza',
-  },
-  {
-    id: 3,
-    image:
-      'https://media.istockphoto.com/photos/large-modern-building-with-blue-letter-h-sign-for-hospital-picture-id1240772668?b=1&k=20&m=1240772668&s=170667a&w=0&h=fBVaxHKgl7-EQsik0B6MF9vG-FSRMrlLpyxoP5lIRtM=',
-    description: 'We are located in ntinda opposite lavanda hotel',
-    distance: '2km away',
-    name: 'Gayaza',
-  },
-  {
-    id: 4,
-    image:
-      'https://media.istockphoto.com/photos/large-modern-building-with-blue-letter-h-sign-for-hospital-picture-id1240772668?b=1&k=20&m=1240772668&s=170667a&w=0&h=fBVaxHKgl7-EQsik0B6MF9vG-FSRMrlLpyxoP5lIRtM=',
-    description: 'We are located in ntinda opposite lavanda hotel',
-    distance: '2km away',
-    name: 'Kawala',
-  },
-];
-
-const MenuserviceFlatList = () => {
+const MenuserviceFlatList = ({service}) => {
+  //console.log(`The serveice is ${JSON.stringify(service)}`);
   return (
     <FlatList
-      data={fakeData}
+      data={service}
       keyExtractor={item => String(item.id)}
       showsVerticalScrollIndicator={false}
       renderItem={({item, index}) => {
@@ -63,7 +30,7 @@ const MenuserviceFlatList = () => {
             }}>
             <Card>
               {/*image */}
-              <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+              <Card.Cover source={{uri: item.image}} />
               {/*image*/}
               <Card.Content>
                 {/*details */}
@@ -94,25 +61,27 @@ const MenuserviceFlatList = () => {
                 <Paragraph style={styles.paragraphStyle}>
                   {item.description}
                 </Paragraph>
-                <View style={[generalstyles.flexStyles]}>
+                <View style={[generalstyles.flexStyles, {marginLeft: -5}]}>
                   <Evil
                     name="location"
                     size={26}
                     color={theme.colors.primary}
                   />
-                  <Text style={{color: theme.colors.placeholder}}>
-                    {`Kawempe ${item.distance} `}
+                  <Text style={styles.paragraphStyle}>
+                    {`${item?.location} ${
+                      item?.distance ? item.distance : ''
+                    } `}
                   </Text>
                 </View>
-                <View style={[generalstyles.flexStyles]}>
-                  {Array(5)
-                    ?.fill(3)
+                <View style={[generalstyles.flexStyles, styles.paragraphStyle]}>
+                  {Array(item.rating)
+                    ?.fill(item.rating)
                     .map((_, index) => (
                       <AntDesignIcon
                         key={index}
                         name="star"
                         size={22}
-                        color={theme.colors.primary}
+                        color={theme.colors.yellow}
                       />
                     ))}
                 </View>
@@ -123,7 +92,7 @@ const MenuserviceFlatList = () => {
                     size={21}
                     color={theme.colors.primary}
                   />
-                  <Text style={{color: theme.colors.placeholder}}>24/7</Text>
+                  <Text style={styles.paragraphStyle}> {item.workingTime}</Text>
                 </View>
                 {/*working hours */}
                 {/*host languages */}
@@ -133,9 +102,17 @@ const MenuserviceFlatList = () => {
                     size={24}
                     color={theme.colors.primary}
                   />
-                  <Text style={{color: theme.colors.placeholder}}>
-                    English , Luganda, Swahili
-                  </Text>
+                  {item?.languages.map((lang, index) => (
+                    <Text style={{color: theme.colors.placeholder}} key={index}>
+                      {' '}
+                      {lang}
+                      {`${
+                        index + 1 !== item.languages.length
+                          ? `${' | '}`
+                          : `${''}`
+                      }`}
+                    </Text>
+                  ))}
                 </View>
                 {/*host languages */}
 
@@ -145,9 +122,17 @@ const MenuserviceFlatList = () => {
                     size={21}
                     color={theme.colors.primary}
                   />
-                  <Text style={{color: theme.colors.placeholder}}>
-                    Paypal Credit ,Card ,Mobile Money
-                  </Text>
+                  {item?.paymentOptions.map((option, index) => (
+                    <Text style={styles.paragraphStyle} key={index}>
+                      {' '}
+                      {option}
+                      {`${
+                        index + 1 !== item.paymentOptions.length
+                          ? `${' | '}`
+                          : `${''}`
+                      }`}
+                    </Text>
+                  ))}
                 </View>
                 <View></View>
               </Card.Content>
@@ -164,5 +149,6 @@ export default MenuserviceFlatList;
 const styles = StyleSheet.create({
   paragraphStyle: {
     color: theme.colors.placeholder,
+    marginVertical: 2,
   },
 });
