@@ -39,4 +39,11 @@ export const generalstyles = StyleSheet.create({
   cardMargin: {
     marginVertical: 2,
   },
+  inputStyles: {
+    height: 40,
+    borderWidth: 0,
+    borderRadius: 10,
+    flex: 1,
+    color: theme.colors.black,
+  },
 });

@@ -6,6 +6,7 @@ import {homecards} from '../../fakedata/homecards';
 import {generalstyles} from '../../general/generalstyles';
 import {FAB} from 'react-native-paper';
 import {theme} from '../../theme/theme';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = ({navigation}: any) => {
   const [images, setStatus] = useState([
@@ -25,6 +26,9 @@ const HomeScreen = ({navigation}: any) => {
     },
   ]);
 
+  //navigation
+  //const navigation = useNavigation<ReactNavigation.RootParamList>();
+
   return (
     <View style={[generalstyles.background, generalstyles.container]}>
       {/* FAB*/}
@@ -33,13 +37,13 @@ const HomeScreen = ({navigation}: any) => {
         icon="plus"
         accessibilityLabel="post"
         animated={true}
-        onPress={() => console.log('Pressed')}
         color={theme.colors.primary}
         theme={{
           colors: {
             accent: theme.colors.text,
           },
         }}
+        onPress={()=>navigation.navigate("PostScreen")}
       />
       {/*FAB */}
       <FlatList

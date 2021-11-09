@@ -7,6 +7,8 @@ import {theme} from '../../theme/theme';
 import MenuScreen from '../../screens/MenuScreens/MenuScreen';
 import MenuServices from '../../screens/MenuScreens/MenuServices';
 import SearchAppBar from '../../components/AppBars/SearchAppBar';
+import PostScreen from '../../screens/PostScreen/PostScreen';
+import AuthBar from '../../components/AppBars/AuthBar';
 
 function CheckerScreen() {
   return (
@@ -53,9 +55,24 @@ const StackNavigator = () => {
         })}
       />
       <Stack.Screen
-        name="Checker"
-        options={{headerShown: false}}
-        component={CheckerScreen}
+        name="PostScreen"
+        options={({route}) => ({
+          header: props => (
+            <AuthBar
+              {...props}
+              title={`Add a Post`}
+              back={true}
+              previous
+              titleStyle={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: theme.colors.black,
+              }}
+              headerStyles={{backgroundColor: theme.colors.text, elevation: 0}}
+            />
+          ),
+        })}
+        component={PostScreen}
       />
     </Stack.Navigator>
   );
@@ -181,3 +198,77 @@ const MenuServicestack = () => {
   );
 };
 //menulist stack
+
+//service stack
+const Servicestack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Hospitals">
+      <Stack.Screen
+        name="Hospitals"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for hospitals`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Doctors"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for Doctors`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Pharmacies"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for Pharmaciess`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Nurses"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for nurses`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Clinics"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for clinics`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+    </Stack.Navigator>
+  );
+};
+//service stack
