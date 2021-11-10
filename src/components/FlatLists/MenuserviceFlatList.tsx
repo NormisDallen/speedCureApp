@@ -1,5 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View, FlatList, Pressable, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Pressable,
+  Image,
+  Alert,
+} from 'react-native';
 import {theme} from '../../theme/theme';
 import {Card, Title, Paragraph, Badge} from 'react-native-paper';
 import {generalstyles} from '../../general/generalstyles';
@@ -12,9 +20,11 @@ import {
   Material,
   OctIcon,
 } from '../Icons/Icons';
+import {useNavigation} from '@react-navigation/core';
 
 const MenuserviceFlatList = ({service}) => {
   //console.log(`The serveice is ${JSON.stringify(service)}`);
+  const navigation = useNavigation<any>();
   return (
     <FlatList
       data={service}
@@ -39,7 +49,7 @@ const MenuserviceFlatList = ({service}) => {
                     generalstyles.flexStyles,
                     {justifyContent: 'space-between', alignItems: 'center'},
                   ]}>
-                  <Title style={styles.paragraphStyle}>{item.name}</Title>
+                  <Title style={generalstyles.paragraphStyle}>{item.name}</Title>
                   <ButtonComponent
                     mode="outlined"
                     text="Services"
@@ -55,10 +65,13 @@ const MenuserviceFlatList = ({service}) => {
                       fontSize: 8,
                       height: 35,
                     }}
+                    onPress={() =>
+                      navigation.navigate('Menu', {screen: 'Services'})
+                    }
                   />
                 </View>
                 {/*more details */}
-                <Paragraph style={styles.paragraphStyle}>
+                <Paragraph style={generalstyles.paragraphStyle}>
                   {item.description}
                 </Paragraph>
                 <View style={[generalstyles.flexStyles, {marginLeft: -5}]}>
@@ -67,13 +80,13 @@ const MenuserviceFlatList = ({service}) => {
                     size={26}
                     color={theme.colors.primary}
                   />
-                  <Text style={styles.paragraphStyle}>
+                  <Text style={generalstyles.paragraphStyle}>
                     {`${item?.location} ${
                       item?.distance ? item.distance : ''
                     } `}
                   </Text>
                 </View>
-                <View style={[generalstyles.flexStyles, styles.paragraphStyle]}>
+                <View style={[generalstyles.flexStyles, generalstyles.paragraphStyle]}>
                   {Array(item.rating)
                     ?.fill(item.rating)
                     .map((_, index) => (
@@ -92,7 +105,10 @@ const MenuserviceFlatList = ({service}) => {
                     size={21}
                     color={theme.colors.primary}
                   />
-                  <Text style={styles.paragraphStyle}> {item.workingTime}</Text>
+                  <Text style={generalstyles.paragraphStyle}>
+                    {' '}
+                    {item.workingTime}
+                  </Text>
                 </View>
                 {/*working hours */}
                 {/*host languages */}
@@ -123,7 +139,7 @@ const MenuserviceFlatList = ({service}) => {
                     color={theme.colors.primary}
                   />
                   {item?.paymentOptions.map((option, index) => (
-                    <Text style={styles.paragraphStyle} key={index}>
+                    <Text style={generalstyles.paragraphStyle} key={index}>
                       {' '}
                       {option}
                       {`${
@@ -145,10 +161,3 @@ const MenuserviceFlatList = ({service}) => {
 };
 
 export default MenuserviceFlatList;
-
-const styles = StyleSheet.create({
-  paragraphStyle: {
-    color: theme.colors.placeholder,
-    marginVertical: 2,
-  },
-});

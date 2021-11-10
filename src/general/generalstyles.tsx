@@ -46,4 +46,8 @@ export const generalstyles = StyleSheet.create({
     flex: 1,
     color: theme.colors.black,
   },
+  paragraphStyle: {
+    color: theme.colors.placeholder,
+    marginVertical: 2,
+  }
 });
