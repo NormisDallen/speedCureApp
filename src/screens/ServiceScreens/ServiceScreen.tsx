@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import AvatarComponent from '../../components/Avatar/Avatar';
 import FloatingButton from '../../components/Buttons/FloatingButton';
-import MenuList from '../../components/FlatLists/MenuList';
 import {
   AntDesignIcon,
   Evil,
@@ -20,6 +19,10 @@ import {
 } from '../../components/Icons/Icons';
 import {generalstyles} from '../../general/generalstyles';
 import {theme} from '../../theme/theme';
+//FAB group
+import {FAB, Portal, Provider} from 'react-native-paper';
+import {SpeedDial} from 'react-native-elements';
+import {useNavigation} from '@react-navigation/native';
 
 //fake components
 
@@ -49,6 +52,42 @@ const menu = [
       'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
     serviceName: 'X-rays',
   },
+  {
+    id: 5,
+    image:
+      'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    serviceName: 'Surgery',
+  },
+  {
+    id: 6,
+    image:
+      'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    serviceName: 'Dental Care',
+  },
+  {
+    id: 7,
+    image:
+      'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    serviceName: 'Family Planning',
+  },
+  {
+    id: 8,
+    image:
+      'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    serviceName: 'Mid wivery',
+  },
+  {
+    id: 9,
+    image:
+      'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    serviceName: 'Optics',
+  },
+  {
+    id: 10,
+    image:
+      'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bnVyc2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    serviceName: 'Available Jobs',
+  },
 ];
 
 const ServiceScreen = () => {
@@ -64,24 +103,48 @@ const ServiceScreen = () => {
     'Card',
     'Mobile Money',
   ]);
+  //use navigation
+
+  const [open, setOpen] = useState(false);
+
+  //navigation
+  const navigation = useNavigation<any>();
 
   return (
     <View style={[generalstyles.background, generalstyles.container]}>
-      {/*services provided */}
-      <FloatingButton
-        accessibilityLabel="post"
-        styles={[
-          generalstyles.absoluteStyles,
-          {right: theme.dimensions.width / 3, bottom: 10},
-        ]}
-        src="https://cdn-icons.flaticon.com/png/512/1865/premium/1865153.png?token=exp=1639189798~hmac=0b6fce785fdd4003135c4223c960cf3e"
-        label="Map"
-      />
+      {/*floating button */}
+      <SpeedDial
+        style={[generalstyles.absoluteStyles, {bottom: 10, right: 10}]}
+        isOpen={open}
+        icon={{name: 'more', color: '#fff'}}
+        openIcon={{name: 'close', color: '#fff'}}
+        color={theme.colors.primary}
+        onOpen={() => setOpen(!open)}
+        onClose={() => setOpen(!open)}>
+        <SpeedDial.Action
+          icon={{name: 'chat', color: '#fff'}}
+          title="Chat"
+          color={theme.colors.primary}
+          onPress={() => navigation.navigate('ChatService')}
+        />
+        <SpeedDial.Action
+          icon={{name: 'map', color: '#fff'}}
+          title="Map"
+          color={theme.colors.primary}
+          onPress={() => console.log('Delete Something')}
+        />
+      </SpeedDial>
+
+      {/*flooting button */}
+
       <FlatList
         data={menu}
         keyExtractor={item => item.image}
-        numColumns={2}
+        numColumns={3}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 100,
+        }}
         ListHeaderComponent={
           <View style={[styles.cardStyle]}>
             <View>
@@ -201,7 +264,10 @@ const ServiceScreen = () => {
         }
         renderItem={({item, index}) => {
           return (
-            <Pressable style={[styles.pressableStyles, {}]}>
+            <Pressable
+              style={[styles.pressableStyles]}
+              key={index}
+              onPress={() => navigation.navigate('EachService')}>
               <Image source={{uri: item.image}} style={[styles.imageStyles]} />
               {/*menu words*/}
               <View style={[{marginVertical: 5, marginHorizontal: 5}]}>
@@ -225,7 +291,9 @@ const ServiceScreen = () => {
           );
         }}
       />
-      {/*services provided */}
+      {/*services */}
+
+      {/*services */}
     </View>
   );
 };
@@ -241,14 +309,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   pressableStyles: {
-    width: theme.dimensions.width / 2.4,
-    height: 150,
+    width: theme.dimensions.width / 4,
+    height: 100,
     borderRadius: 10,
     margin: 10,
   },
   imageStyles: {
-    width: theme.dimensions.width / 2.2,
-    height: 125,
+    width: theme.dimensions.width / 4,
+    height: 95,
     borderRadius: 10,
   },
 });

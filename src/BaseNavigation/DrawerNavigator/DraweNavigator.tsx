@@ -79,4 +79,4 @@ const DraweNavigator = () => {
 
 export default DraweNavigator;
 
-const styles = StyleSheet.create({});
+
