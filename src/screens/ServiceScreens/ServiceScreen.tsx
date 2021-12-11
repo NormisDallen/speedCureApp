@@ -22,6 +22,7 @@ import {theme} from '../../theme/theme';
 //FAB group
 import {FAB, Portal, Provider} from 'react-native-paper';
 import {SpeedDial} from 'react-native-elements';
+import {useNavigation} from '@react-navigation/native';
 
 //fake components
 
@@ -105,6 +106,9 @@ const ServiceScreen = () => {
 
   const [open, setOpen] = useState(false);
 
+  //navigation
+  const navigation = useNavigation<any>();
+
   return (
     <View style={[generalstyles.background, generalstyles.container]}>
       {/*floating button */}
@@ -120,7 +124,6 @@ const ServiceScreen = () => {
           icon={{name: 'chat', color: '#fff'}}
           title="Chat"
           color={theme.colors.primary}
-           
           onPress={() => console.log('Add Something')}
         />
         <SpeedDial.Action
@@ -260,7 +263,9 @@ const ServiceScreen = () => {
         }
         renderItem={({item, index}) => {
           return (
-            <Pressable style={[styles.pressableStyles]}>
+            <Pressable
+              style={[styles.pressableStyles]}
+              onPress={() => navigation.navigate('EachService')}>
               <Image source={{uri: item.image}} style={[styles.imageStyles]} />
               {/*menu words*/}
               <View style={[{marginVertical: 5, marginHorizontal: 5}]}>

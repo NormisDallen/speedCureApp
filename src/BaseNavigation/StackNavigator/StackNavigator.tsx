@@ -10,6 +10,7 @@ import SearchAppBar from '../../components/AppBars/SearchAppBar';
 import PostScreen from '../../screens/PostScreen/PostScreen';
 import AuthBar from '../../components/AppBars/AuthBar';
 import ServiceScreen from '../../screens/ServiceScreens/ServiceScreen';
+import OnlineStoreScreen from '../../screens/ServiceScreens/OnlineStore';
 
 const Stack = createNativeStackNavigator();
 
@@ -137,6 +138,23 @@ export const MenuStack = () => {
         }}
         component={MenuServicestack}
       />
+
+      {/*services stack */}
+      <Stack.Screen
+        name="EachService"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for drugs`}
+              previous={true}
+            />
+          ),
+        }}
+        component={OnlineStoreScreen}
+      />
+
+      {/*service stack */}
     </Stack.Navigator>
   );
 };
@@ -215,3 +233,39 @@ const MenuServicestack = () => {
   );
 };
 //menulist stack
+
+//Each service
+const EachServicestack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Hospitals">
+      <Stack.Screen
+        name="OnlineStore"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for drugs`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+      <Stack.Screen
+        name="Doctors"
+        options={{
+          header: props => (
+            <SearchAppBar
+              {...props}
+              placeholder={`search for Doctors`}
+              previous={true}
+            />
+          ),
+        }}
+        component={MenuServices}
+      />
+    </Stack.Navigator>
+  );
+};
+
+//Each service
