@@ -103,6 +103,7 @@ const ServiceScreen = () => {
     'Card',
     'Mobile Money',
   ]);
+  //use navigation
 
   const [open, setOpen] = useState(false);
 
@@ -124,7 +125,7 @@ const ServiceScreen = () => {
           icon={{name: 'chat', color: '#fff'}}
           title="Chat"
           color={theme.colors.primary}
-          onPress={() => console.log('Add Something')}
+          onPress={() => navigation.navigate('ChatService')}
         />
         <SpeedDial.Action
           icon={{name: 'map', color: '#fff'}}
