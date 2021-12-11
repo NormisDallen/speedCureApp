@@ -9,6 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import AvatarComponent from '../../components/Avatar/Avatar';
+import FloatingButton from '../../components/Buttons/FloatingButton';
 import MenuList from '../../components/FlatLists/MenuList';
 import {
   AntDesignIcon,
@@ -67,6 +68,15 @@ const ServiceScreen = () => {
   return (
     <View style={[generalstyles.background, generalstyles.container]}>
       {/*services provided */}
+      <FloatingButton
+        accessibilityLabel="post"
+        styles={[
+          generalstyles.absoluteStyles,
+          {right: theme.dimensions.width / 3, bottom: 10},
+        ]}
+        src="https://cdn-icons.flaticon.com/png/512/1865/premium/1865153.png?token=exp=1639189798~hmac=0b6fce785fdd4003135c4223c960cf3e"
+        label="Map"
+      />
       <FlatList
         data={menu}
         keyExtractor={item => item.image}

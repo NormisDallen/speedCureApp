@@ -7,6 +7,7 @@ import {generalstyles} from '../../general/generalstyles';
 import {FAB} from 'react-native-paper';
 import {theme} from '../../theme/theme';
 import {useNavigation} from '@react-navigation/native';
+import FloatingButton from '../../components/Buttons/FloatingButton';
 
 const HomeScreen = ({navigation}: any) => {
   const [images, setStatus] = useState([
@@ -31,19 +32,13 @@ const HomeScreen = ({navigation}: any) => {
 
   return (
     <View style={[generalstyles.background, generalstyles.container]}>
-      {/* FAB*/}
-      <FAB
-        style={[generalstyles.absoluteStyles, {right: 10, bottom: 10}]}
+      {/*FAB */}
+      <FloatingButton
         icon="plus"
         accessibilityLabel="post"
-        animated={true}
-        color={theme.colors.primary}
-        theme={{
-          colors: {
-            accent: theme.colors.text,
-          },
-        }}
-        onPress={()=>navigation.navigate("PostScreen")}
+        onPress={() => navigation.navigate('PostScreen')}
+        styles={[generalstyles.absoluteStyles, {right: 10, bottom: 10}]}
+        src="https://cdn-icons-png.flaticon.com/512/4471/4471009.png"
       />
       {/*FAB */}
       <FlatList

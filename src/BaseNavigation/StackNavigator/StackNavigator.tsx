@@ -25,7 +25,7 @@ const StackNavigator = () => {
             <AppBar
               {...props}
               showCart
-              title="Speed Cure"
+              title="Yo Health"
               subTitle="Your health is our pride"
               barStyle={{
                 backgroundColor: `${theme.colors.text}`,
