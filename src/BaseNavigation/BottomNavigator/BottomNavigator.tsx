@@ -34,6 +34,7 @@ export default function BottomNavigator() {
           ),
         }}
       />
+
       <Tab.Screen
         name="Menu"
         component={MenuStack}
@@ -44,6 +45,8 @@ export default function BottomNavigator() {
           ),
         }}
       />
+
+      
       <Tab.Screen
         name="Search"
         component={MenuStack}
@@ -54,6 +57,8 @@ export default function BottomNavigator() {
           ),
         }}
       />
+
+
       <Tab.Screen
         name="Notifications"
         component={MenuStack}

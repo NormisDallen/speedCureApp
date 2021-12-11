@@ -23,6 +23,7 @@ export const theme = {
     black: '#000000',
     yellow: 'gold',
     whitesmoke: 'whitesmoke',
+    myMessageColor: '#DCF8C5',
   },
   font: {
     regular: 20,
