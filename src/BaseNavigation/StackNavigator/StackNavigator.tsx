@@ -9,14 +9,7 @@ import MenuServices from '../../screens/MenuScreens/MenuServices';
 import SearchAppBar from '../../components/AppBars/SearchAppBar';
 import PostScreen from '../../screens/PostScreen/PostScreen';
 import AuthBar from '../../components/AppBars/AuthBar';
-
-function CheckerScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{color: 'black'}}>checker Screen</Text>
-    </View>
-  );
-}
+import ServiceScreen from '../../screens/ServiceScreens/ServiceScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,8 +25,8 @@ const StackNavigator = () => {
             <AppBar
               {...props}
               showCart
-              title="Speed Cure"
-              subTitle="Your health first"
+              title="Yo Health"
+              subTitle="Your health is our pride"
               barStyle={{
                 backgroundColor: `${theme.colors.text}`,
                 width: '100%',
@@ -113,6 +106,30 @@ export const MenuStack = () => {
         })}
         component={MenuScreen}
       />
+      <Stack.Screen
+        name="Services"
+        options={({route}) => ({
+          header: props => (
+            <AuthBar
+              {...props}
+              title={`Khan Hospital`}
+              back={true}
+              previous
+              titleStyle={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: 'white',
+              }}
+              headerStyles={{
+                backgroundColor: theme.colors.primary,
+                elevation: 0,
+              }}
+            />
+          ),
+        })}
+        component={ServiceScreen}
+      />
+
       <Stack.Screen
         name="MenuService"
         options={{
@@ -198,77 +215,3 @@ const MenuServicestack = () => {
   );
 };
 //menulist stack
-
-//service stack
-const Servicestack = () => {
-  return (
-    <Stack.Navigator initialRouteName="Hospitals">
-      <Stack.Screen
-        name="Hospitals"
-        options={{
-          header: props => (
-            <SearchAppBar
-              {...props}
-              placeholder={`search for hospitals`}
-              previous={true}
-            />
-          ),
-        }}
-        component={MenuServices}
-      />
-      <Stack.Screen
-        name="Doctors"
-        options={{
-          header: props => (
-            <SearchAppBar
-              {...props}
-              placeholder={`search for Doctors`}
-              previous={true}
-            />
-          ),
-        }}
-        component={MenuServices}
-      />
-      <Stack.Screen
-        name="Pharmacies"
-        options={{
-          header: props => (
-            <SearchAppBar
-              {...props}
-              placeholder={`search for Pharmaciess`}
-              previous={true}
-            />
-          ),
-        }}
-        component={MenuServices}
-      />
-      <Stack.Screen
-        name="Nurses"
-        options={{
-          header: props => (
-            <SearchAppBar
-              {...props}
-              placeholder={`search for nurses`}
-              previous={true}
-            />
-          ),
-        }}
-        component={MenuServices}
-      />
-      <Stack.Screen
-        name="Clinics"
-        options={{
-          header: props => (
-            <SearchAppBar
-              {...props}
-              placeholder={`search for clinics`}
-              previous={true}
-            />
-          ),
-        }}
-        component={MenuServices}
-      />
-    </Stack.Navigator>
-  );
-};
-//service stack

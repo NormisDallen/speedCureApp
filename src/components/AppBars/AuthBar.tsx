@@ -1,7 +1,6 @@
 import React from 'react';
 import {Appbar} from 'react-native-paper';
-import { theme } from '../../theme/theme';
-
+import {theme} from '../../theme/theme';
 
 const AuthBar = ({
   navigation,
@@ -23,10 +22,7 @@ const AuthBar = ({
         {previous ? (
           <Appbar.BackAction onPress={() => navigation.goBack()} />
         ) : null}
-        <Appbar.Content
-          title={title}
-          titleStyle={[titleStyle, {color: theme.colors.primary}]}
-        />
+        <Appbar.Content title={title} titleStyle={[titleStyle]} />
       </Appbar.Header>
     );
   }

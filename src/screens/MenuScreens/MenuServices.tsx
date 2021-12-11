@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import FloatingButton from '../../components/Buttons/FloatingButton';
 import MenuserviceFlatList from '../../components/FlatLists/MenuserviceFlatList';
 import Loader from '../../components/Loaders/Loader';
 import {generalstyles} from '../../general/generalstyles';
@@ -31,7 +32,19 @@ const MenuServices = ({route}) => {
           <Loader />
         </View>
       ) : (
-        <MenuserviceFlatList service={route?.params?.data} />
+        <View>
+          <FloatingButton
+            icon="plus"
+            accessibilityLabel="post"
+            styles={[
+              generalstyles.absoluteStyles,
+              {right: theme.dimensions.width / 3, bottom: 10},
+            ]}
+            src="https://cdn-icons-png.flaticon.com/512/535/535239.png"
+            label="Nearest"
+          />
+          <MenuserviceFlatList service={route?.params?.data} />
+        </View>
       )}
     </View>
   );
