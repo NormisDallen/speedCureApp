@@ -266,6 +266,7 @@ const ServiceScreen = () => {
           return (
             <Pressable
               style={[styles.pressableStyles]}
+              key={index}
               onPress={() => navigation.navigate('EachService')}>
               <Image source={{uri: item.image}} style={[styles.imageStyles]} />
               {/*menu words*/}
