@@ -8,7 +8,7 @@ const adUnitId = __DEV__
 function BannerAdvert() {
   return (
     <BannerAd
-      unitId={TestIds.BANNER}
+      unitId={'ca-app-pub-1109935127679364~2981652919'}
       size={BannerAdSize.SMART_BANNER}
       requestOptions={{
         requestNonPersonalizedAdsOnly: true,
