@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,6 +11,9 @@ import {generalstyles} from '../../general/generalstyles';
 import {theme} from '../../theme/theme';
 import {SliderBox} from 'react-native-image-slider-box';
 import TextComponent from '../../components/TextComponent/Text';
+
+
+
 
 const categories = [
   {
@@ -70,16 +73,17 @@ const images = [
   'https://source.unsplash.com/1024x768/?tree', // Network image
 ];
 
-//drugs
 
-//drugs
+
 
 const DrugStoreScreen = () => {
+  
   return (
     <ScrollView
       style={[generalstyles.container, generalstyles.background]}
       showsVerticalScrollIndicator={false}>
       {/*carousel */}
+      
       <View>
         <SliderBox
           images={images}
@@ -95,6 +99,8 @@ const DrugStoreScreen = () => {
           circleLoop
         />
       </View>
+
+     
 
       {/*coursel */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>

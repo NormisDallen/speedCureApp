@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/HomeScreens/HomeScreen';
 import AppBar from '../../components/AppBars/AppBar';
@@ -9,11 +8,7 @@ import MenuServices from '../../screens/MenuScreens/MenuServices';
 import SearchAppBar from '../../components/AppBars/SearchAppBar';
 import PostScreen from '../../screens/PostScreen/PostScreen';
 import AuthBar from '../../components/AppBars/AuthBar';
-import ServiceScreen from '../../screens/ServiceScreens/ServiceScreen';
 import OnlineStoreScreen from '../../screens/ServiceScreens/OnlineStore';
-import PersonBar from '../../components/AppBars/PersonBar';
-import ChatScreen from '../../screens/ChatScreen/ChatScreen';
-
 const Stack = createNativeStackNavigator();
 
 //home stacks
@@ -77,7 +72,7 @@ const StackNavigator = () => {
 export default StackNavigator;
 //default stack
 
-//menu stack
+//main menu stack
 export const MenuStack = () => {
   return (
     <Stack.Navigator initialRouteName="MenuServices">
@@ -109,29 +104,6 @@ export const MenuStack = () => {
         })}
         component={MenuScreen}
       />
-      <Stack.Screen
-        name="Services"
-        options={({route}) => ({
-          header: props => (
-            <AuthBar
-              {...props}
-              title={`Khan Hospital`}
-              back={true}
-              previous
-              titleStyle={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                color: 'white',
-              }}
-              headerStyles={{
-                backgroundColor: theme.colors.primary,
-                elevation: 0,
-              }}
-            />
-          ),
-        })}
-        component={ServiceScreen}
-      />
 
       <Stack.Screen
         name="MenuService"
@@ -140,6 +112,7 @@ export const MenuStack = () => {
         }}
         component={MenuServicestack}
       />
+      {/*main menu stack */}
 
       {/*services stack */}
       <Stack.Screen
@@ -158,28 +131,32 @@ export const MenuStack = () => {
 
       {/*service stack */}
 
-      {/*chat  area*/}
-      <Stack.Screen
-        name="ChatService"
+      {/*map stack */}
+      {/* <Stack.Screen
+        name="MapScreen"
         options={({route}) => ({
           header: props => (
-            <PersonBar
+            <AuthBar
               {...props}
-              title={`Khan Hospital`}
-              subTitle={`2 minutes ago`}
-              source={`https://media.istockphoto.com/photos/large-modern-building-with-blue-letter-h-sign-for-hospital-
-              picture-id1240772668?b=1&k=20&m=1240772668&s=170667a&w=0&h=fBVaxHKgl7-EQsik0B6MF9vG-FSRMrlLpyxoP5lIRtM=`}
-              previous={true}
+              title={`View Map`}
+              back={true}
+              previous
+              titleStyle={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: theme.colors.black,
+              }}
+              headerStyles={{backgroundColor: theme.colors.text, elevation: 0}}
             />
           ),
         })}
-        component={ChatScreen}
-      />
-      {/*chat area */}
+        component={MapComponent}
+      /> */}
+      {/*map stack */}
     </Stack.Navigator>
   );
 };
-//menu statck
+//menu main statck
 
 //menulist stack
 const MenuServicestack = () => {

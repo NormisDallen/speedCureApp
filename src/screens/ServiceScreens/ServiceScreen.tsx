@@ -20,7 +20,7 @@ import {
 import {generalstyles} from '../../general/generalstyles';
 import {theme} from '../../theme/theme';
 //FAB group
-import {FAB, Portal, Provider} from 'react-native-paper';
+
 import {SpeedDial} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 
@@ -125,7 +125,7 @@ const ServiceScreen = () => {
           icon={{name: 'chat', color: '#fff'}}
           title="Chat"
           color={theme.colors.primary}
-          onPress={() => navigation.navigate('ChatService')}
+          onPress={() => navigation.navigate('Chat')}
         />
         <SpeedDial.Action
           icon={{name: 'map', color: '#fff'}}

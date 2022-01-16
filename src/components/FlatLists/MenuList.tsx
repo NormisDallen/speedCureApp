@@ -27,6 +27,7 @@ const MenuList = ({menu}: MenuInterface) => {
                 screen: item.serviceName,
                 params: {
                   data: item.data,
+                  name: item.serviceName,
                 },
               })
             }>
