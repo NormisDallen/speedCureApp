@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import BottomNavigator from '../BottomNavigator/BottomNavigator';
 import DrawerContentComponent from '../../components/Drawer/DrawerContent';
@@ -7,38 +6,21 @@ import {IonIcon} from '../../components/Icons/Icons';
 import AppBar from '../../components/AppBars/AppBar';
 import {theme} from '../../theme/theme';
 import DrugStoreScreen from '../../screens/DrugStore/DrugStore';
+import MapStack from '../StackNavigator/MapStack';
 
-function HomeScreen({navigation}: any) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    </View>
-  );
-}
-
-function NotificationsScreen({navigation}: any) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
 const Drawer = createDrawerNavigator();
 
 const DraweNavigator = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="SpeedCure"
+      initialRouteName="YoHealth"
       backBehavior="history"
       drawerContent={props => <DrawerContentComponent {...props} />}>
       <Drawer.Screen
-        name="SpeedCure"
+        name="YoHealth"
         component={BottomNavigator}
         options={{
-          title: 'SpeedCure',
+          title: 'YoHealth',
           drawerIcon: ({focused, size}) => (
             <IonIcon name="md-home" size={size} color={`red`} />
           ),
@@ -73,10 +55,21 @@ const DraweNavigator = () => {
           ),
         })}
       />
+
+      {/*map */}
+      <Drawer.Screen
+        name="MapStack"
+        component={MapStack}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/*map */}
+
+      {/*chat screen */}
+      {/*chat screen */}
     </Drawer.Navigator>
   );
 };
 
 export default DraweNavigator;
-
-

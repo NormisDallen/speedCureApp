@@ -20,7 +20,7 @@ const AppBar = ({
       {previous ? (
         <Appbar.BackAction
           onPress={() => {
-            navigation.navigate('Home');
+            navigation.navigate('YoHealth');
           }}
           color={`${theme.colors.primary}`}
         />

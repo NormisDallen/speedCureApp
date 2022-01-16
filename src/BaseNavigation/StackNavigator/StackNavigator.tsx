@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../../screens/HomeScreens/HomeScreen';
 import AppBar from '../../components/AppBars/AppBar';
@@ -77,7 +76,7 @@ const StackNavigator = () => {
 export default StackNavigator;
 //default stack
 
-//menu stack
+//main menu stack
 export const MenuStack = () => {
   return (
     <Stack.Navigator initialRouteName="MenuServices">
@@ -140,6 +139,7 @@ export const MenuStack = () => {
         }}
         component={MenuServicestack}
       />
+      {/*main menu stack */}
 
       {/*services stack */}
       <Stack.Screen
@@ -176,10 +176,33 @@ export const MenuStack = () => {
         component={ChatScreen}
       />
       {/*chat area */}
+
+      {/*map stack */}
+      {/* <Stack.Screen
+        name="MapScreen"
+        options={({route}) => ({
+          header: props => (
+            <AuthBar
+              {...props}
+              title={`View Map`}
+              back={true}
+              previous
+              titleStyle={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: theme.colors.black,
+              }}
+              headerStyles={{backgroundColor: theme.colors.text, elevation: 0}}
+            />
+          ),
+        })}
+        component={MapComponent}
+      /> */}
+      {/*map stack */}
     </Stack.Navigator>
   );
 };
-//menu statck
+//menu main statck
 
 //menulist stack
 const MenuServicestack = () => {
