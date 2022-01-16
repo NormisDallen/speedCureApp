@@ -8,11 +8,7 @@ import MenuServices from '../../screens/MenuScreens/MenuServices';
 import SearchAppBar from '../../components/AppBars/SearchAppBar';
 import PostScreen from '../../screens/PostScreen/PostScreen';
 import AuthBar from '../../components/AppBars/AuthBar';
-import ServiceScreen from '../../screens/ServiceScreens/ServiceScreen';
 import OnlineStoreScreen from '../../screens/ServiceScreens/OnlineStore';
-import PersonBar from '../../components/AppBars/PersonBar';
-import ChatScreen from '../../screens/ChatScreen/ChatScreen';
-
 const Stack = createNativeStackNavigator();
 
 //home stacks
@@ -108,29 +104,6 @@ export const MenuStack = () => {
         })}
         component={MenuScreen}
       />
-      <Stack.Screen
-        name="Services"
-        options={({route}) => ({
-          header: props => (
-            <AuthBar
-              {...props}
-              title={`Khan Hospital`}
-              back={true}
-              previous
-              titleStyle={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                color: 'white',
-              }}
-              headerStyles={{
-                backgroundColor: theme.colors.primary,
-                elevation: 0,
-              }}
-            />
-          ),
-        })}
-        component={ServiceScreen}
-      />
 
       <Stack.Screen
         name="MenuService"
@@ -157,25 +130,6 @@ export const MenuStack = () => {
       />
 
       {/*service stack */}
-
-      {/*chat  area*/}
-      <Stack.Screen
-        name="ChatService"
-        options={({route}) => ({
-          header: props => (
-            <PersonBar
-              {...props}
-              title={`Khan Hospital`}
-              subTitle={`2 minutes ago`}
-              source={`https://media.istockphoto.com/photos/large-modern-building-with-blue-letter-h-sign-for-hospital-
-              picture-id1240772668?b=1&k=20&m=1240772668&s=170667a&w=0&h=fBVaxHKgl7-EQsik0B6MF9vG-FSRMrlLpyxoP5lIRtM=`}
-              previous={true}
-            />
-          ),
-        })}
-        component={ChatScreen}
-      />
-      {/*chat area */}
 
       {/*map stack */}
       {/* <Stack.Screen

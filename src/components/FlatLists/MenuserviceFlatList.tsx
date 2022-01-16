@@ -49,7 +49,9 @@ const MenuserviceFlatList = ({service}) => {
                     generalstyles.flexStyles,
                     {justifyContent: 'space-between', alignItems: 'center'},
                   ]}>
-                  <Title style={generalstyles.paragraphStyle}>{item.name}</Title>
+                  <Title style={generalstyles.paragraphStyle}>
+                    {item.name}
+                  </Title>
                   <ButtonComponent
                     mode="outlined"
                     text="Services"
@@ -66,7 +68,7 @@ const MenuserviceFlatList = ({service}) => {
                       height: 35,
                     }}
                     onPress={() =>
-                      navigation.navigate('Menu', {screen: 'Services'})
+                      navigation.navigate('hospitals', {screen: 'Hospital'})
                     }
                   />
                 </View>
@@ -86,7 +88,11 @@ const MenuserviceFlatList = ({service}) => {
                     } `}
                   </Text>
                 </View>
-                <View style={[generalstyles.flexStyles, generalstyles.paragraphStyle]}>
+                <View
+                  style={[
+                    generalstyles.flexStyles,
+                    generalstyles.paragraphStyle,
+                  ]}>
                   {Array(item.rating)
                     ?.fill(item.rating)
                     .map((_, index) => (

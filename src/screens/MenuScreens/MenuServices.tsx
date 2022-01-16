@@ -59,10 +59,6 @@ const MenuServices = ({route}) => {
               onPress={() =>
                 navigation.navigate('MapStack', {
                   screen: 'MapScreen',
-                  params: {
-                    data: route?.params?.data,
-                    name: 'Hospitals',
-                  },
                 })
               }
             />

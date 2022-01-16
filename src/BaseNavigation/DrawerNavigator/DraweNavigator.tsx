@@ -7,6 +7,8 @@ import AppBar from '../../components/AppBars/AppBar';
 import {theme} from '../../theme/theme';
 import DrugStoreScreen from '../../screens/DrugStore/DrugStore';
 import MapStack from '../StackNavigator/MapStack';
+import ServiceStack from '../StackNavigator/ServiceStack';
+import ChatStack from '../StackNavigator/ChatStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -64,9 +66,28 @@ const DraweNavigator = () => {
           headerShown: false,
         }}
       />
+
+      {/*services */}
+      <Drawer.Screen
+        name="hospitals"
+        component={ServiceStack}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/*services */}
+
       {/*map */}
 
       {/*chat screen */}
+      <Drawer.Screen
+        name="Chat"
+        component={ChatStack}
+        options={{
+          headerShown: false,
+        }}
+      />
+
       {/*chat screen */}
     </Drawer.Navigator>
   );

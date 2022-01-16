@@ -4,10 +4,8 @@ import {generalstyles} from '../../general/generalstyles';
 import {theme} from '../../theme/theme';
 
 const ChatMessage = ({message, name, id}) => {
-  console.log(`The message is ${JSON.stringify(message)} and name is ${name}`);
-  if (message.UserName == name) {
-    alert('yes');
-  }
+  // console.log(`The message is ${JSON.stringify(message)} and name is ${name}`);
+
   return (
     <Pressable
       style={{
@@ -20,15 +18,15 @@ const ChatMessage = ({message, name, id}) => {
         marginVertical: 5,
       }}>
       {/*time */}
-      <View style={[generalstyles.absoluteStyles, {bottom: 1, right: 4}]}>
-        <Text style={{fontSize: 9, marginBottom: 4}}>
+      <View style={[generalstyles.absoluteStyles, {bottom: 1, right: 18}]}>
+        <Text style={{fontSize: 9, marginVertical: 2, paddingVertical: 2}}>
           {message.messageTime}
         </Text>
       </View>
 
       {/*time */}
 
-      <View style={[generalstyles.resideViews]}>
+      <View style={[generalstyles.resideViews, {marginBottom: 10}]}>
         <Text>{message?.messageText}</Text>
       </View>
     </Pressable>
@@ -38,6 +36,3 @@ const ChatMessage = ({message, name, id}) => {
 export default ChatMessage;
 
 const styles = StyleSheet.create({});
-function alert(arg0: string) {
-  throw new Error('Function not implemented.');
-}

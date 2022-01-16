@@ -12,7 +12,7 @@ const peopleArray = [
     userImg:
       'https://images.pexels.com/photos/5885979/pexels-photo-5885979.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
     messageTime: '4:10am',
-    messageText: 'Hey we moved',
+    messageText: 'Hey we moved on ',
   },
   {
     id: 2,
@@ -32,12 +32,28 @@ const peopleArray = [
       'Hey there this is chiller hw is everything  Hey there this is chiller hw is everything  Hey there this is chiller hw is everything ',
   },
   {
+    id: 1,
+    userName: 'james',
+    userImg:
+      'https://images.pexels.com/photos/5885979/pexels-photo-5885979.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    messageTime: '4:10am',
+    messageText: 'Hey we moved on ',
+  },
+  {
     id: 4,
     userName: 'Ken',
     userImg:
       'https://images.pexels.com/photos/5885979/pexels-photo-5885979.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
     messageTime: '10:12pm',
     messageText: 'nicolas',
+  },
+  {
+    id: 1,
+    userName: 'james',
+    userImg:
+      'https://images.pexels.com/photos/5885979/pexels-photo-5885979.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    messageTime: '4:10am',
+    messageText: 'Hey we moved on ',
   },
   {
     id: 5,
@@ -116,7 +132,12 @@ const ChatScreen = () => {
         keyExtractor={item => String(item.id)}
         inverted
         renderItem={({item, index}) => (
-          <ChatMessage message={item} name={sample.userName} id={sample.id} />
+          <ChatMessage
+            key={index}
+            message={item}
+            name={sample.userName}
+            id={sample.id}
+          />
         )}
       />
       <InputBox />

@@ -125,7 +125,7 @@ const ServiceScreen = () => {
           icon={{name: 'chat', color: '#fff'}}
           title="Chat"
           color={theme.colors.primary}
-          onPress={() => navigation.navigate('ChatService')}
+          onPress={() => navigation.navigate('Chat')}
         />
         <SpeedDial.Action
           icon={{name: 'map', color: '#fff'}}

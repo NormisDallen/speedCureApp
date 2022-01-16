@@ -10,7 +10,6 @@ const InputBox = () => {
   const [message, SetMessage] = useState('');
 
   const sendMessage = () => {
-    alert(message);
     SetMessage('');
   };
   return (
@@ -20,19 +19,28 @@ const InputBox = () => {
           <Pressable style={{marginLeft: 2}}>
             <EntypoIcons
               name="emoji-happy"
-              size={24}
+              size={20}
               color={theme.colors.placeholder}
             />
           </Pressable>
 
           <View style={{flex: 1, alignItems: 'flex-start'}}>
             <TextInput
-              style={{
-                marginLeft: 10,
-              }}
+              style={[
+                {
+                  marginLeft: 10,
+                  height: 35,
+                  borderColor: 'gray',
+                  borderWidth: 0,
+                  color: theme.colors.black,
+                },
+                generalstyles.flexStyles,
+              ]}
+              autoCorrect
               multiline
               value={message}
               placeholder={`Type a message`}
+              placeholderTextColor={theme.colors.placeholder}
               onChangeText={text => SetMessage(text)}
               onSubmitEditing={sendMessage}
             />
@@ -40,7 +48,7 @@ const InputBox = () => {
           <Pressable>
             <EntypoIcons
               name="attachment"
-              size={24}
+              size={20}
               color={theme.colors.placeholder}
             />
           </Pressable>
@@ -50,7 +58,7 @@ const InputBox = () => {
               style={{alignItems: 'flex-end', marginLeft: 20, marginRight: 1}}>
               <EntypoIcons
                 name="camera"
-                size={24}
+                size={20}
                 color={theme.colors.placeholder}
               />
             </Pressable>
@@ -64,8 +72,8 @@ const InputBox = () => {
           <Pressable style={styles.buttonContainer}>
             <MaterialCommunityIcon
               name="microphone"
-              size={24}
-              color={theme.colors.primary}
+              size={22}
+              color={theme.colors.whitesmoke}
             />
           </Pressable>
         ) : (
@@ -90,17 +98,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 25,
     alignItems: 'center',
+    height: 45,
   },
   buttonContainer: {
-    backgroundColor: `${theme.colors.secondary}`,
-    borderRadius: 50,
-    width: 50,
-    height: 40,
+    backgroundColor: `${theme.colors.primary}`,
+    borderRadius: 60,
+    width: 45,
+    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
   },
 });
-
-function alert(message: string) {
-  throw new Error('Function not implemented.');
-}
