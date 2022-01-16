@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,9 +11,7 @@ import {generalstyles} from '../../general/generalstyles';
 import {theme} from '../../theme/theme';
 import {SliderBox} from 'react-native-image-slider-box';
 import TextComponent from '../../components/TextComponent/Text';
-
-
-
+import BannerAdvert from '../../components/AdMob/BannerAd';
 
 const categories = [
   {
@@ -73,17 +71,13 @@ const images = [
   'https://source.unsplash.com/1024x768/?tree', // Network image
 ];
 
-
-
-
 const DrugStoreScreen = () => {
-  
   return (
     <ScrollView
       style={[generalstyles.container, generalstyles.background]}
       showsVerticalScrollIndicator={false}>
       {/*carousel */}
-      
+
       <View>
         <SliderBox
           images={images}
@@ -100,9 +94,13 @@ const DrugStoreScreen = () => {
         />
       </View>
 
-     
-
       {/*coursel */}
+
+      {/*banner */}
+      <View style={{marginVertical: 10}}>
+        <BannerAdvert />
+      </View>
+      {/*banner */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View>
           <View style={[generalstyles.viewStyle, {marginVertical: 10}]} />
@@ -149,6 +147,12 @@ const DrugStoreScreen = () => {
           <View style={[generalstyles.viewStyle]} />
         </View>
       </ScrollView>
+
+      {/*banner */}
+      <View>
+        <BannerAdvert />
+      </View>
+      {/*banner */}
 
       {/*drugs */}
       <View>
@@ -216,6 +220,7 @@ const DrugStoreScreen = () => {
                 </Text>
               </View>
             </View>
+
             <View
               style={{
                 marginVertical: 10,
@@ -244,6 +249,11 @@ const DrugStoreScreen = () => {
           </View>
         </View>
         {/*here */}
+        {/*banner */}
+        <View>
+          <BannerAdvert />
+        </View>
+        {/*banner */}
         <View
           style={{
             backgroundColor: '#f4f4f4',
@@ -529,5 +539,3 @@ const DrugStoreScreen = () => {
 };
 
 export default DrugStoreScreen;
-
-const styles = StyleSheet.create({});

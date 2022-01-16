@@ -4,6 +4,7 @@ import ChatMessage from '../../components/ChatMessage/ChatMessage';
 import InputBox from '../../components/InputBox/InputBox';
 import {generalstyles} from '../../general/generalstyles';
 import {theme} from '../../theme/theme';
+//ca-app-pub-1109935127679364~2981652919
 
 const peopleArray = [
   {

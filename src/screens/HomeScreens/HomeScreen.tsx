@@ -8,6 +8,7 @@ import {FAB} from 'react-native-paper';
 import {theme} from '../../theme/theme';
 import {useNavigation} from '@react-navigation/native';
 import FloatingButton from '../../components/Buttons/FloatingButton';
+import Banner from '../../components/AdMob/BannerAd';
 
 const HomeScreen = ({navigation}: any) => {
   const [images, setStatus] = useState([
@@ -41,6 +42,7 @@ const HomeScreen = ({navigation}: any) => {
         src="https://cdn-icons-png.flaticon.com/512/4471/4471009.png"
       />
       {/*FAB */}
+
       <FlatList
         ListHeaderComponent={
           <View>
@@ -71,6 +73,7 @@ const HomeScreen = ({navigation}: any) => {
         }}
       />
       {/*adverts */}
+      
     </View>
   );
 };
