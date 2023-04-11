@@ -94,7 +94,7 @@ const Fixtures = () => {
 
             <ScrollView>
                   <View>
-                      <Text style={{color:"black"}}>Fixtures</Text>
+                      <Text style={{color:"black"}}>this  fixtures</Text>
                   </View>
             </ScrollView>
 
