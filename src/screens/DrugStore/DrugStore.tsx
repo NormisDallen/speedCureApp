@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,10 +7,12 @@ import {
   Image,
   Pressable,
 } from 'react-native';
-import {generalstyles} from '../../general/generalstyles';
-import {theme} from '../../theme/theme';
-import {SliderBox} from 'react-native-image-slider-box';
+import { generalstyles } from '../../general/generalstyles';
+import { theme } from '../../theme/theme';
+import { SliderBox } from 'react-native-image-slider-box';
 import TextComponent from '../../components/TextComponent/Text';
+import { Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -20,70 +22,68 @@ const categories = [
     category: [
       {
         image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM%20(1).jpeg?alt=media&token=241811aa-24b2-4449-8c09-a163527a495f',
+        name: 'Caps',
       },
       {
         image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM.jpeg?alt=media&token=9c18215f-d2c4-4e06-9444-5ba39a44d355',
+        name: 'T-Shirts',
       },
       {
         image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.16%20PM.jpeg?alt=media&token=00542997-4100-4809-901c-acd43f0e40d8',
+        name: 'Wrist Bands',
       },
       {
         image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.15%20PM%20(2).jpeg?alt=media&token=15d8b936-9b3a-4682-b8bd-15060f47cefd',
+        name: 'Mugs',
+      },
+      {
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM%20(1).jpeg?alt=media&token=241811aa-24b2-4449-8c09-a163527a495f',
+        name: 'Caps',
+      },
+      {
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM.jpeg?alt=media&token=9c18215f-d2c4-4e06-9444-5ba39a44d355',
+        name: 'T-Shirts',
+      },
+      {
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.16%20PM.jpeg?alt=media&token=00542997-4100-4809-901c-acd43f0e40d8',
+        name: 'Wrist Bands',
+      },
+      {
+        image:
+          'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.15%20PM%20(2).jpeg?alt=media&token=15d8b936-9b3a-4682-b8bd-15060f47cefd',
+        name: 'Mugs',
       },
     ],
   },
-  {
-    category: [
-      {
-        image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
-      },
-      {
-        image:
-          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        name: 'drugs',
-      },
-    ],
-  },
+
 ];
 
 const images = [
-  'https://images.unsplash.com/photo-1580377968242-daed42865732?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  'https://source.unsplash.com/1024x768/?water',
-  'https://source.unsplash.com/1024x768/?girl',
-  'https://source.unsplash.com/1024x768/?tree', // Network image
+  'https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.40.52_nf7dm9.jpg',
+  'https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.40.52_nf7dm9.jpg',
+  'https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.40.52_nf7dm9.jpg',
 ];
 
 
 
 
 const DrugStoreScreen = () => {
-  
+
+  const navigation =  useNavigation<any>()
+
   return (
     <ScrollView
       style={[generalstyles.container, generalstyles.background]}
       showsVerticalScrollIndicator={false}>
       {/*carousel */}
-      
+
       <View>
         <SliderBox
           images={images}
@@ -91,7 +91,7 @@ const DrugStoreScreen = () => {
           dotColor={theme.colors.text}
           inactiveDotColor={theme.colors.placeholder}
           autoplay
-          ImageComponentStyle={{borderRadius: 15, width: '95%', marginTop: 5}}
+          ImageComponentStyle={{ borderRadius: 15, width: '95%', marginTop: 15 }}
           imageLoadingColor={theme.colors.text}
           resizeMethod={'resize'}
           resizeMode={'cover'}
@@ -100,14 +100,14 @@ const DrugStoreScreen = () => {
         />
       </View>
 
-     
+
 
       {/*coursel */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View>
-          <View style={[generalstyles.viewStyle, {marginVertical: 10}]} />
+          <View style={[generalstyles.viewStyle, { marginVertical: 10 }]} />
           <View style={[generalstyles.centerContent]}>
-            <Text style={{color: theme.colors.primary}}>Categories</Text>
+            <Text style={{ color: theme.colors.text }}>Categories</Text>
           </View>
           {categories.map((category, index) => {
             return (
@@ -115,7 +115,7 @@ const DrugStoreScreen = () => {
                 key={index}
                 style={[
                   generalstyles.flexStyles,
-                  {justifyContent: 'space-evenly'},
+                  { justifyContent: 'space-evenly' },
                 ]}>
                 {category.category.map((cat, index) => (
                   <Pressable
@@ -127,17 +127,17 @@ const DrugStoreScreen = () => {
                     }}>
                     <View>
                       <Image
-                        source={{uri: cat.image}}
+                        source={{ uri: cat.image }}
                         resizeMode="cover"
                         style={{
                           height: 100,
-                          width: theme.dimensions.width / 4,
+                          width: theme.dimensions.width / 4.8,
                           borderRadius: 10,
                         }}
                       />
                     </View>
                     <View style={[generalstyles.centerContent]}>
-                      <Text style={{color: theme.colors.primary}}>
+                      <Text style={{ color: theme.colors.primary }}>
                         {cat.name}
                       </Text>
                     </View>
@@ -152,18 +152,18 @@ const DrugStoreScreen = () => {
 
       {/*drugs */}
       <View>
+
         <View
           style={{
-            backgroundColor: '#f4f4f4',
             margin: 5,
             padding: 5,
             borderRadius: 4,
           }}>
-          <TextComponent category="Covid Drugs" />
+          <TextComponent category="Caps" />
           <View
             style={[
               generalstyles.flexStyles,
-              {justifyContent: 'space-evenly'},
+              { justifyContent: 'space-evenly' },
             ]}>
             <View
               style={{
@@ -173,23 +173,40 @@ const DrugStoreScreen = () => {
               }}>
               <Image
                 source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                  uri: 'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM%20(1).jpeg?alt=media&token=241811aa-24b2-4449-8c09-a163527a495f',
                 }}
                 style={{
-                  width: theme.dimensions.width / 3.4,
+                  width: theme.dimensions.width / 2.5,
                   height: 150,
                 }}
                 resizeMode="cover"
               />
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
+                <Text style={[{ color: theme.colors.primary }]}>KIU Caps</Text>
               </View>
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
+                <Text style={[{ color: theme.colors.black, fontSize: 18 }]}>
+                  UGX 50,000.0/=
                 </Text>
               </View>
+              {/* show now */}
+              <Button
+                mode="contained"
+                contentStyle={{
+                  flexDirection: 'row-reverse',
+                }}
+                style={{
+                  backgroundColor:theme.colors.primary,
+                  borderRadius:20
+                }}
+                onPress={()=>navigation.navigate("PaymentStack")}
+                
+              >
+                Shop Now
+              </Button>
+              {/* show now */}
             </View>
+
 
             <View
               style={{
@@ -199,63 +216,56 @@ const DrugStoreScreen = () => {
               }}>
               <Image
                 source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                  uri: 'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM.jpeg?alt=media&token=9c18215f-d2c4-4e06-9444-5ba39a44d355',
                 }}
                 style={{
-                  width: theme.dimensions.width / 3.5,
+                  width: theme.dimensions.width / 2.5,
                   height: 150,
                 }}
                 resizeMode="cover"
               />
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
+                <Text style={[{ color: theme.colors.primary }]}>Yellow Caps</Text>
               </View>
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
+                <Text style={[{ color: theme.colors.black, fontSize: 18 }]}>
+                UGX 50,000.0/=
                 </Text>
               </View>
-            </View>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                            {/* show now */}
+                            <Button
+                mode="contained"
+                contentStyle={{
+                  flexDirection: 'row-reverse',
                 }}
                 style={{
-                  width: theme.dimensions.width / 3.5,
-                  height: 150,
+                  backgroundColor:theme.colors.primary,
+                  borderRadius:20
                 }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
+                onPress={()=>navigation.navigate("PaymentStack")}
+              >
+                Shop Now
+              </Button>
+              {/* show now */}
             </View>
+
           </View>
+
         </View>
-        {/*here */}
-        <View
+         {/* caps */}
+
+         {/* tshirs */}
+         <View
           style={{
-            backgroundColor: '#f4f4f4',
             margin: 5,
             padding: 5,
             borderRadius: 4,
           }}>
-          <TextComponent category="Covid Drugs" />
+          <TextComponent category="T-Shirts" />
           <View
             style={[
               generalstyles.flexStyles,
-              {justifyContent: 'space-evenly'},
+              { justifyContent: 'space-evenly' },
             ]}>
             <View
               style={{
@@ -265,23 +275,39 @@ const DrugStoreScreen = () => {
               }}>
               <Image
                 source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                  uri: 'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.15%20PM%20(1).jpeg?alt=media&token=c5c8f7ad-5879-4ab1-b6cd-d70b9e9e8e94',
                 }}
                 style={{
-                  width: theme.dimensions.width / 3.4,
+                  width: theme.dimensions.width / 2.5,
                   height: 150,
                 }}
                 resizeMode="cover"
               />
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
+                <Text style={[{ color: theme.colors.primary }]}>Green KIU T-Shirts</Text>
               </View>
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
+                <Text style={[{ color: theme.colors.black, fontSize: 18 }]}>
+                  UGX 50,000.0/=
                 </Text>
               </View>
+              {/* show now */}
+              <Button
+                mode="contained"
+                contentStyle={{
+                  flexDirection: 'row-reverse',
+                }}
+                style={{
+                  backgroundColor:theme.colors.primary,
+                  borderRadius:20
+                }}
+                onPress={()=>navigation.navigate("PaymentStack")}
+              >
+                Shop Now
+              </Button>
+              {/* show now */}
             </View>
+
 
             <View
               style={{
@@ -291,237 +317,45 @@ const DrugStoreScreen = () => {
               }}>
               <Image
                 source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                  uri: 'https://firebasestorage.googleapis.com/v0/b/deliveroo-5333f.appspot.com/o/WhatsApp%20Image%202023-04-06%20at%203.28.14%20PM.jpeg?alt=media&token=9c18215f-d2c4-4e06-9444-5ba39a44d355',
                 }}
                 style={{
-                  width: theme.dimensions.width / 3.5,
+                  width: theme.dimensions.width / 2.5,
                   height: 150,
                 }}
                 resizeMode="cover"
               />
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
+                <Text style={[{ color: theme.colors.primary }]}>Yellow KIU T-Shirts</Text>
               </View>
               <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
+                <Text style={[{ color: theme.colors.black, fontSize: 18 }]}>
+                UGX 50,000.0/=
                 </Text>
               </View>
-            </View>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                            {/* show now */}
+                            <Button
+                mode="contained"
+                contentStyle={{
+                  flexDirection: 'row-reverse',
                 }}
                 style={{
-                  width: theme.dimensions.width / 3.5,
-                  height: 150,
+                  backgroundColor:theme.colors.primary,
+                  borderRadius:20
                 }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
+                onPress={()=>navigation.navigate("PaymentStack")}
+              >
+                Shop Now
+              </Button>
+              {/* show now */}
             </View>
+
           </View>
+
         </View>
+         {/* tshirts */}
 
-        {/*here */}
-        <View
-          style={{
-            backgroundColor: '#f4f4f4',
-            margin: 5,
-            padding: 5,
-            borderRadius: 4,
-          }}>
-          <TextComponent category="Covid Drugs" />
-          <View
-            style={[
-              generalstyles.flexStyles,
-              {justifyContent: 'space-evenly'},
-            ]}>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                }}
-                style={{
-                  width: theme.dimensions.width / 3.4,
-                  height: 150,
-                }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
-            </View>
 
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                }}
-                style={{
-                  width: theme.dimensions.width / 3.5,
-                  height: 150,
-                }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                }}
-                style={{
-                  width: theme.dimensions.width / 3.5,
-                  height: 150,
-                }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        {/*here */}
-        <View
-          style={{
-            backgroundColor: '#f4f4f4',
-            margin: 5,
-            padding: 5,
-            borderRadius: 4,
-          }}>
-          <TextComponent category="Covid Drugs" />
-          <View
-            style={[
-              generalstyles.flexStyles,
-              {justifyContent: 'space-evenly'},
-            ]}>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                }}
-                style={{
-                  width: theme.dimensions.width / 3.4,
-                  height: 150,
-                }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
-            </View>
-
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                }}
-                style={{
-                  width: theme.dimensions.width / 3.5,
-                  height: 150,
-                }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
-            </View>
-            <View
-              style={{
-                marginVertical: 10,
-                marginHorizontal: 5,
-                padding: 10,
-              }}>
-              <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGRydWclMjBpbWFnZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-                }}
-                style={{
-                  width: theme.dimensions.width / 3.5,
-                  height: 150,
-                }}
-                resizeMode="cover"
-              />
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.primary}]}>covid drug</Text>
-              </View>
-              <View style={[generalstyles.centerContent]}>
-                <Text style={[{color: theme.colors.black, fontSize: 18}]}>
-                  UGX 1200
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-
-        {/*here */}
       </View>
       {/*drugs */}
     </ScrollView>
@@ -530,4 +364,3 @@ const DrugStoreScreen = () => {
 
 export default DrugStoreScreen;
 
-const styles = StyleSheet.create({});

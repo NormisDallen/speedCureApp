@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,13 +12,13 @@ import {
   Platform,
   Alert,
 } from 'react-native';
-import {Badge, Paragraph} from 'react-native-paper';
+import { Badge, Paragraph } from 'react-native-paper';
 
-import {Avatar, Card} from 'react-native-paper';
-import {theme} from '../../theme/theme';
-import {Evil, IonIcon, MaterialCommunityIcon} from '../Icons/Icons';
-import {HomeInterface, _Number} from '../../types/types';
-import {generalstyles} from '../../general/generalstyles';
+import { Avatar, Card } from 'react-native-paper';
+import { theme } from '../../theme/theme';
+import { Evil, IonIcon, MaterialCommunityIcon } from '../Icons/Icons';
+import { HomeInterface, _Number } from '../../types/types';
+import { generalstyles } from '../../general/generalstyles';
 import AvatarComponent from '../Avatar/Avatar';
 import ButtonComponent from '../Buttons/Button';
 
@@ -43,17 +43,19 @@ const HomeCard = ({
   return (
     <Card>
       <View
-        style={[generalstyles.flexStyles, {justifyContent: 'space-evenly'}]}>
-        <View style={{flex: 1}}>
+        style={[generalstyles.flexStyles, { justifyContent: 'space-evenly' }]}>
+        <View style={{ flex: 1 }}>
           <View
             style={[
               generalstyles.flexStyles,
-              {marginHorizontal: 10, marginTop: 10},
+              { marginHorizontal: 10, marginTop: 10 },
             ]}>
-            <Pressable style={{marginHorizontal: 10}}>
-              <Avatar.Image source={{uri: displayPicture}} />
+            <Pressable style={{ marginHorizontal: 10 }}>
+              <Avatar.Image source={{ uri: displayPicture }} />
             </Pressable>
+
             <View>
+
               <Paragraph
                 style={[
                   {
@@ -61,30 +63,34 @@ const HomeCard = ({
                     color: theme.colors.onSurface,
                   },
                 ]}>{`${hospitalName}`}</Paragraph>
-              <View style={{width: theme.dimensions.width / 1.3}}>
+              <View style={{ width: theme.dimensions.width / 1.3 }}>
                 <Paragraph
                   style={{
                     color: theme.colors.placeholder,
                   }}>{`${time}`}</Paragraph>
-                <Paragraph
+
+                {/* <Paragraph
                   style={{
                     color: theme.colors.onSurface,
-                  }}>{`${description}`}</Paragraph>
+                  }}>{`${description}`}
+                  </Paragraph> */}
+
               </View>
             </View>
+
           </View>
           <View></View>
         </View>
-        <View style={[{justifyContent: 'flex-end'}]}>
+        <View style={[{ justifyContent: 'flex-end' }]}>
           <Pressable
             style={[
-              {marginRight: 10, right: 10, top: 10},
+              { marginRight: 10, right: 10, top: 10 },
               generalstyles.absoluteStyles,
             ]}>
             <MaterialCommunityIcon
               size={21}
               name="dots-vertical"
-              color={theme.colors.placeholder}
+              color={theme.colors.primary}
             />
           </Pressable>
         </View>
@@ -95,76 +101,72 @@ const HomeCard = ({
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
-          marginHorizontal: 15,
+          marginHorizontal: 0,
           marginVertical: 5,
           borderRadius: 10,
         }}>
-        {images?.map((item: string, index: _Number) => (
-          <View key={index}>
-            <Pressable
-              style={{
+
+
+        {
+          images?.map((item, index) => {
+            // console.log(`The item is ${JSON.stringify(item)}`)
+            return <View key={index}>
+              <Pressable style={{
                 borderWidth: StyleSheet.hairlineWidth,
                 borderColor: theme.colors.text,
-                marginRight: images.length - 1 == index ? 35 : 0,
-                borderRadius: 10,
-                width:
-                  images?.length == 1
-                    ? theme.dimensions.width - 50
-                    : theme.dimensions.width / 1.5,
+                // marginLeft:-20
               }}>
-              {/*show badge */}
-              <Badge
-                size={17}
-                visible={true}
-                style={{
+                {/*show badge */}
+                <Badge size={17} visible={true} style={{
                   position: 'absolute',
-                  top: 4,
-                  right: 5,
+                  top: 4, right: 5,
                   color: `${theme.colors.text}`,
                   backgroundColor: `${theme.colors.primary}`,
-                  fontWeight: '700',
+                  fontWeight: "700",
                   fontSize: 10,
-                  zIndex: 20,
+                  zIndex: 20
                 }}>
-                {`${index + 1}/${images?.length}`}
-              </Badge>
-              {/*show badge */}
+                  {`${index + 1}/${images?.length}`}
+                </Badge>
+                {/*show badge */}
 
-              {/*site location only on first image */}
-              {index == 0 && (
-                <Badge
-                  size={40}
-                  visible={true}
-                  style={{
+                {/*site location only on first image */}
+                {index == 0 &&
+                  <Badge size={40} visible={true} style={{
                     position: 'absolute',
-                    bottom: theme.dimensions.width / 6,
-                    right: 40,
+                    bottom: theme.dimensions.width / 6, right: 40,
                     color: `${theme.colors.primary}`,
-                    backgroundColor: '#F0F8FF',
+                    backgroundColor: "#abd5ab",
                     opacity: 0.8,
-                    fontWeight: '900',
+                    fontWeight: "900",
                     fontSize: 17,
                     zIndex: 20,
+
                   }}>
-                  {event}
-                </Badge>
-              )}
+                    {event}
 
-              {/*site location */}
+                  </Badge>
+                }
 
-              <Image
-                style={{
-                  width: '100%',
-                  height: 300,
-                  borderRadius: 10,
-                }}
-                source={{
-                  uri: item,
-                }}
-              />
-            </Pressable>
-          </View>
-        ))}
+
+                {/*site location */}
+
+                <Image
+                  style={{
+                    width: images?.length == 1 ? theme.dimensions.width : theme.dimensions.width / 1.2,
+                    height: 300
+                  }}
+                  source={{
+                    uri: item,
+                  }}
+                />
+
+              </Pressable>
+
+            </View>
+          }
+          )
+        }
       </ScrollView>
 
       <Card.Content>
@@ -177,14 +179,14 @@ const HomeCard = ({
           }}>
           <Card.Actions
             style={[
-              {marginVertical: 10, padding: 10, justifyContent: 'space-evenly'},
+              { justifyContent: 'space-evenly' },
               generalstyles.flexStyles,
             ]}>
             <View style={[generalstyles.flexStyles]}>
               <TouchableOpacity
                 activeOpacity={0.4}
                 onPress={() => setIconHeartColor('red')}>
-                <Evil name="heart" size={33} color={theme.colors.placeholder} />
+                <Evil name="heart" size={33} color={theme.colors.primary} />
               </TouchableOpacity>
               <Badge
                 size={17}
@@ -195,16 +197,18 @@ const HomeCard = ({
                   fontWeight: '700',
                   fontSize: 10,
                   zIndex: 20,
+                  position: 'absolute',
+                   bottom: 1, right: 0,
                 }}>
-                {`${likes} likes`}
+                {`${likes}`}
               </Badge>
             </View>
             {/*commet icon */}
             <View style={[generalstyles.flexStyles]}>
-              <TouchableOpacity activeOpacity={0.4} style={{marginLeft: 10}}>
+              <TouchableOpacity activeOpacity={0.4} style={{ marginLeft: 10 }}>
                 <MaterialCommunityIcon
                   size={26}
-                  color={theme.colors.placeholder}
+                  color={theme.colors.primary}
                   name="comment-outline"
                 />
               </TouchableOpacity>
@@ -218,10 +222,12 @@ const HomeCard = ({
                     fontWeight: '700',
                     fontSize: 10,
                     zIndex: 20,
+                    position: 'absolute',
+                    bottom: 1, right: 0,
                   }}>
                   {comments.length == 1
-                    ? `${comments.length} comment`
-                    : `${comments.length} comments`}
+                    ? `${comments.length}`
+                    : `${comments.length}`}
                 </Badge>
               ) : (
                 <Badge
@@ -241,11 +247,11 @@ const HomeCard = ({
 
             {/*comment icon */}
           </Card.Actions>
-          <View style={{justifyContent: 'flex-end'}}>
+          <View style={{ justifyContent: 'flex-end' }}>
             {/*bookmark */}
             {/*bookmark */}
             <View>
-              <TouchableOpacity activeOpacity={0.4} style={{marginLeft: 10}}>
+              <TouchableOpacity activeOpacity={0.4} style={{ marginLeft: 10 }}>
                 <IonIcon
                   name="bookmark-outline"
                   size={24}
@@ -256,30 +262,33 @@ const HomeCard = ({
           </View>
         </View>
       </Card.Content>
+
       {/*view all comments */}
-      {comments && comments?.length > 0 ? (
+      
         <Paragraph
           style={[
             {
               color: theme.colors.placeholder,
-              padding: 3,
+              marginHorizontal:5,
               alignSelf: 'center',
             },
             generalstyles.flexStyles,
           ]}>
-          view all comments
+          {description?.length > 50 ? description?.slice(0, 98) + ' read more ...' : description}
         </Paragraph>
-      ) : null}
+      
       {/*view all comments */}
       {/*caption */}
       <Card.Content>
-        <View style={[generalstyles.flexStyles, {marginLeft: 5}]}>
+        <View style={[generalstyles.flexStyles, { marginLeft: 5 }]}>
           <View>
-            <AvatarComponent size={40} source={'https://picsum.photos/700'} />
+            <AvatarComponent size={40}
+             source={'https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3BvcnRzJTIwbWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'}
+              />
           </View>
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={[generalstyles.container, {marginHorizontal: 10}]}>
+            style={[generalstyles.container, { marginHorizontal: 10 }]}>
             <TextInput
               placeholder="Add a comment..."
               placeholderTextColor={`${theme.colors.placeholder}`}
@@ -311,7 +320,7 @@ const HomeCard = ({
         </View>
       </Card.Content>
       {/*caption */}
-      <View style={[generalstyles.viewStyle, {marginVertical: 5}]}></View>
+      <View style={[generalstyles.viewStyle, { marginVertical: 5 }]}></View>
     </Card>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Appbar, Badge} from 'react-native-paper';
-import {StyleSheet, Pressable, Alert, View} from 'react-native';
+import {StyleSheet, Pressable, Alert, View, StatusBar} from 'react-native';
 import {theme} from '../../theme/theme';
 import {AntDesignIcon} from '../Icons/Icons';
 import {generalstyles} from '../../general/generalstyles';
@@ -17,6 +17,9 @@ const AppBar = ({
 }: any) => {
   return (
     <Appbar.Header dark={true} style={[barStyle]}>
+       <StatusBar
+        backgroundColor={theme.colors.primary}
+       />
       {previous ? (
         <Appbar.BackAction
           onPress={() => {
@@ -29,7 +32,7 @@ const AppBar = ({
         <Appbar.Action
           icon="menu"
           size={30}
-          color={theme.colors.primary}
+          color={theme.colors.text}
           onPress={() => navigation.toggleDrawer()}
         />
       </View>
@@ -70,7 +73,7 @@ const AppBar = ({
             <AntDesignIcon
               name={'shoppingcart'}
               size={40}
-              color={theme.colors.black}
+              color={theme.colors.text}
             />
           </Pressable>
         </View>

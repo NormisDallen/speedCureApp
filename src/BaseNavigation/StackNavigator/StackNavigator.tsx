@@ -23,22 +23,22 @@ const StackNavigator = () => {
             <AppBar
               {...props}
               showCart
-              title="Yo Health"
-              subTitle="Your health is our pride"
+              title="KIU "
+              subTitle="The loins of Ntare"
               barStyle={{
-                backgroundColor: `${theme.colors.text}`,
+                backgroundColor: `${theme.colors.primary}`,
                 width: '100%',
-                elevation: 5,
+                elevation: 0,
               }}
               titleStyle={{
                 marginTop: 2,
 
                 alignSelf: 'center',
-                color: `${theme.colors.primary}`,
+                color: `${theme.colors.text}`,
               }}
               subtitleStyle={{
                 alignSelf: 'center',
-                color: `${theme.colors.placeholder}`,
+                color: `${theme.colors.text}`,
                 marginBottom: 5,
               }}
             />

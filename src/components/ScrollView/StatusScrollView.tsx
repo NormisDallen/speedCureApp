@@ -110,10 +110,10 @@ const StatusComponent = ({images, showViews, imageStyles}: StatusInterface) => {
                     backgroundColor: `${theme.colors.black}`,
                   },
                 ]}
-                //   source={{
-                //     uri: item.image,
-                //   }}
-                source={require('../../assets/appstore.png')}
+                  source={{
+                    uri: item.image,
+                  }}
+                // source={require('../../assets/appstore.png')}
                 resizeMode="cover"
               />
             </Pressable>

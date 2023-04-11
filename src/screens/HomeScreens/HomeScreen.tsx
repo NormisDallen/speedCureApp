@@ -11,12 +11,26 @@ import FloatingButton from '../../components/Buttons/FloatingButton';
 
 const HomeScreen = ({navigation}: any) => {
   const [images, setStatus] = useState([
-    {image: '../../assets/appstore.png', word: 'chilling'},
-    {image: '../../assets/playstore.png', word: 'mulago hospital'},
-    {image: '../../assets/playstore.png', word: 'adfa medicare'},
-    {image: '../../assets/playstore.png', word: 'pharmacy'},
-    {image: '../../assets/playstore.png', word: 'naalya'},
-    {image: '../../assets/playstore.png', word: 'kawempe hospital'},
+    {
+      image: "https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.41.33_mykn6j.jpg",
+      word: "Game"
+  },
+  {
+
+      image: "https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.40.50_qbkzye.jpg",
+      word: "Enjoyimg"
+  },
+  {
+
+      image: "https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.40.52_nf7dm9.jpg",
+
+      word: "Trip"
+  },
+  {
+
+      image: "https://res.cloudinary.com/itgenius/image/upload/v1680425666/WhatsApp_Image_2023-04-02_at_09.40.48_etitkt.jp",
+      word: "3 pointer"
+  },
   ]);
 
   const [show, setShow] = useState([

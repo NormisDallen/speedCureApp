@@ -9,6 +9,7 @@ import DrugStoreScreen from '../../screens/DrugStore/DrugStore';
 import MapStack from '../StackNavigator/MapStack';
 import ServiceStack from '../StackNavigator/ServiceStack';
 import ChatStack from '../StackNavigator/ChatStack';
+import PaymentStack from '../StackNavigator/PaymentStack/PaymentStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,23 +37,26 @@ const DraweNavigator = () => {
           header: props => (
             <AppBar
               {...props}
-              title="Drug Store"
+              showCart
+              title="KIU Store"
               subTitle="We deliver at your door"
               barStyle={{
-                backgroundColor: `${theme.colors.text}`,
+                backgroundColor: `${theme.colors.primary}`,
                 width: '100%',
-                elevation: 5,
+                elevation: 0,
               }}
               titleStyle={{
-                marginTop: 5,
-
+                marginTop:5,
                 alignSelf: 'center',
-                color: `${theme.colors.primary}`,
+                color: `${theme.colors.text}`,
+                marginLeft:-60
               }}
               subtitleStyle={{
                 alignSelf: 'center',
-                color: `${theme.colors.placeholder}`,
+                color: `${theme.colors.text}`,
+                marginLeft:-60
               }}
+              
             />
           ),
         })}
@@ -60,8 +64,8 @@ const DraweNavigator = () => {
 
       {/*map */}
       <Drawer.Screen
-        name="MapStack"
-        component={MapStack}
+        name="PaymentStack"
+        component={PaymentStack}
         options={{
           headerShown: false,
         }}

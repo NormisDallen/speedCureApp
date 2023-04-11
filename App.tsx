@@ -37,7 +37,7 @@ const App = () => {
 }
   useEffect(() => {
     requestPermissions();
-    SplashScreen.hide();
+    // SplashScreen.hide();
     return () => {};
   }, []);
   return <BaseNavigation />;
