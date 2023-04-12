@@ -23,7 +23,7 @@ const StackNavigator = () => {
             <AppBar
               {...props}
               showCart
-              title="KIU "
+              title="KIU BASKETBALL "
               subTitle="The loins of Ntare"
               barStyle={{
                 backgroundColor: `${theme.colors.primary}`,

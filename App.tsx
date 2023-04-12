@@ -11,7 +11,7 @@ const App = () => {
     const auth = await Geolocation.requestAuthorization("whenInUse");
     if(auth === "granted") {
        // do something if granted...
-       console.log("Amina");
+
     }
   }
 
@@ -37,7 +37,7 @@ const App = () => {
 }
   useEffect(() => {
     requestPermissions();
-    // SplashScreen.hide();
+    SplashScreen.hide();
     return () => {};
   }, []);
   return <BaseNavigation />;
