@@ -46,7 +46,7 @@ const Fixtures = () => {
 
     React.useEffect(() => {
         const activeTabIndex = dates.findIndex((date) => date === activeTab);
-        scrollViewRef.current?.scrollTo({ x: activeTabIndex * 110, y: 0, animated: true });
+        scrollViewRef.current?.scrollTo({ x: activeTabIndex * 111, y: 0, animated: true });
     }, [activeTab]);
 
 
@@ -55,7 +55,7 @@ const Fixtures = () => {
         // Scroll to default tab when the component mounts
         if (scrollViewRef.current) {
             const index = dates.indexOf(activeTab);
-            const offsetX = index * 110; // Assuming TAB_WIDTH is defined somewhere
+            const offsetX = index * 111; // Assuming TAB_WIDTH is defined somewhere
             scrollViewRef.current.scrollTo({ x: offsetX, y: 0, animated: true });
         }
     }, []);
