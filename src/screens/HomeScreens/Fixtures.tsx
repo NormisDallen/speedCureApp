@@ -4,6 +4,7 @@ import moment from 'moment';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 // import { ScrollView } from 'react-native-gesture-handler';
 import { theme } from '../../theme/theme';
+import { Image } from 'react-native-elements';
 
 
 
@@ -92,10 +93,65 @@ const Fixtures = () => {
             </View>
 
 
-            <ScrollView>
-                  <View>
-                      <Text style={{color:"black"}}>this  fixtures</Text>
+            <ScrollView style={{}}>
+                  <View  style={styles.card}>
+                   
+                   
+                    
+                    <View style={styles.content}>
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>KFc</Text>
+                        <Image style={{width:35,height:35}} source={require("../../assets/img10.jpeg")} />
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>2.30PM
+
+                        </Text>
+                        <Image  style={{width:35,height:35}}  source={require("../../assets/img1.jpeg")} />
+                       
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}> KIu</Text>
+                    </View>
+                    <View style={styles.content}>
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>Desert</Text>
+                        <Image style={{width:35,height:35}} source={require("../../assets/img2.jpeg")} />
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>5.30PM
+
+                        </Text>
+                        <Image  style={{width:35,height:35}}  source={require("../../assets/img12.jpeg")} />
+                       
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}> MFC</Text>
+                    </View>
+                    <View style={styles.content}>
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>Kiu</Text>
+                        <Image style={{width:35,height:35}} source={require("../../assets/img1.jpeg")} />
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>2.30PM
+
+                        </Text>
+                        <Image  style={{width:35,height:35}}  source={require("../../assets/img5.jpeg")} />
+                       
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>FG</Text>
+                    </View>
+                    <View style={styles.content}>
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>KFc</Text>
+                        <Image style={{width:35,height:35}} source={require("../../assets/img3.jpeg")} />
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>2.30PM
+
+                        </Text>
+                        <Image  style={{width:35,height:35}}  source={require("../../assets/img4.jpeg")} />
+                       
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}> KIU</Text>
+                    </View>
+                      
+                       <View style={styles.content}>
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>KaFc</Text>
+                        <Image style={{width:35,height:35}} source={require("../../assets/img10.jpeg")} />
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500', }}>11.30AM
+
+                        </Text>
+                        <Image  style={{width:35,height:35}}  source={require("../../assets/img14.jpeg")} />
+                       
+                        <Text style={{color:'gray',fontSize:12, fontWeight:'500' }}> EFC</Text>
+                    </View>
+                   
                   </View>
+
             </ScrollView>
 
         </View>
@@ -144,6 +200,34 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
     },
+    card:{
+        backgroundColor: 'white',  
+        borderRadius: 10,  
+        paddingVertical: 10,  
+        paddingHorizontal: 25,  
+        width:350, 
+        height:'100%', 
+        marginVertical: 10, 
+        marginLeft:4, 
+        marginRight:2,
+        justifyContent:'center'
+    
+        
+    },
+    content:{
+        
+        flexDirection:'row',
+        paddingHorizontal:2,
+        alignItems:'center',
+        paddingBottom:10,
+        margin:5,
+        justifyContent:'space-between'
+        
+
+      
+       
+    },
+  
 })
 
 function getMonthDays(year: number, month: string) {
