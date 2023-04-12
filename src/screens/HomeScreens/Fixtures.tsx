@@ -96,8 +96,7 @@ const Fixtures = () => {
             <ScrollView style={{}}>
                   <View  style={styles.card}>
                    
-                   
-                    
+            
                     <View style={styles.content}>
                         <Text style={{color:'gray',fontSize:12, fontWeight:'500'}}>KFc</Text>
                         <Image style={{width:35,height:35}} source={require("../../assets/img10.jpeg")} />
@@ -145,7 +144,7 @@ const Fixtures = () => {
                         <Text style={{color:'gray',fontSize:12, fontWeight:'500', }}>11.30AM
 
                         </Text>
-                        <Image  style={{width:35,height:35}}  source={require("../../assets/img14.jpeg")} />
+                        <Image  style={{width:35,height:35}}  source={require("../../assets/img15.jpeg")} />
                        
                         <Text style={{color:'gray',fontSize:12, fontWeight:'500' }}> EFC</Text>
                     </View>
@@ -202,14 +201,14 @@ const styles = StyleSheet.create({
     },
     card:{
         backgroundColor: 'white',  
-        borderRadius: 10,  
+        borderRadius: 20,  
         paddingVertical: 10,  
         paddingHorizontal: 25,  
         width:350, 
         height:'100%', 
         marginVertical: 10, 
         marginLeft:4, 
-        marginRight:2,
+        marginRight:4,
         justifyContent:'center'
     
         
